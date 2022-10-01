@@ -25,10 +25,3 @@ int binarySearch(int arr[],int n, int target){
     }
     return -1;
 }
-
-int main(){
-    
-    int arr[]={2,4,9,11,14,19,24,38};
-    
-    binarySearch(arr,8,19);
-}
