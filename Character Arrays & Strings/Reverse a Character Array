@@ -22,6 +22,19 @@ int main()
 
 //Using function 
 
+void reverseCA(char name[]){
+    int s=0, e=strlen(name)-1;
+    
+    while(s<=e){
+        swap(name[s],name[e]);
+        s++;
+        e--;
+    }
+}
+
+
+------------------------OR---------------------------------
+
 char* reverseCA(char name[]){
     int s=0, e=strlen(name)-1;
     
