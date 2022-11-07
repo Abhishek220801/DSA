@@ -5,8 +5,7 @@ using namespace std;
 int main()
 {
     char name[15]="love";
-    int s=0;
-    int e=strlen(name)-1;
+    int s=0, e=strlen(name)-1;
     
     while(s<=e){
         swap(name[s],name[e]);
@@ -24,8 +23,7 @@ int main()
 //Using function 
 
 char* reverseCA(char name[]){
-    int s=0;
-    int e=strlen(name)-1;
+    int s=0, e=strlen(name)-1;
     
     while(s<=e){
         swap(name[s],name[e]);
