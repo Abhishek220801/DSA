@@ -16,3 +16,21 @@ int main()
     
     cout<<"The reversed name --> "<<name;
 }
+
+
+       -------------------OR--------------------------
+
+
+//Using function 
+
+char* reverseCA(char name[]){
+    int s=0;
+    int e=strlen(name)-1;
+    
+    while(s<=e){
+        swap(name[s],name[e]);
+        s++;
+        e--;
+    }
+    return name;
+}
