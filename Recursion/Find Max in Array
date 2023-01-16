@@ -1,0 +1,14 @@
+//include<limits.h> to use INT_MIN / INT_MAX
+
+int findMax(int arr[], int n, int index){
+
+    if(index==n)
+        return INT_MIN;
+    
+    //recurrence relation 
+    int ans = arr[index];
+    int recAns= findMax(arr,n,index+1);
+    int maxi = max(ans,recAns);
+    return maxi;
+}
+
