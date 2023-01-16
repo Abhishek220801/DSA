@@ -1,0 +1,12 @@
+int expo(int n){
+
+    if(n==0)
+        return 1;
+        
+    int cp = expo(n/2);
+    
+    if(n&1)
+        return cp*cp*2;
+    else
+        return cp*cp;
+}
