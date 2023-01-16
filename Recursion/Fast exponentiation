@@ -5,7 +5,7 @@ int expo(int n){
         
     int cp = expo(n/2);
     
-    if(n&1)
+    if(n&1)                          //n&1 -> binary operation to check if n is odd
         return cp*cp*2;
     else
         return cp*cp;
