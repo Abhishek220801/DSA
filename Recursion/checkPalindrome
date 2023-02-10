@@ -15,7 +15,12 @@ int main(){
     string s;
     cout<<"Enter the string: ";
     cin>>s;
-    cout<<checkPalindrome(s,0,s.length()-1);
+    bool isPalindrome = checkPalindrome(s,0,s.length()-1);
+
+    if(isPalindrome==0)
+        cout<<"Not Palindrome";
+    else
+        cout<<"It is Palindrome";
 
     return 0;
 }
