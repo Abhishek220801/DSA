@@ -8,9 +8,8 @@ public:
             return 1;
         
         //recurrence relation
-        int fibo;
-        fibo = fib(n-1)+fib(n-2);
-
+        int fibo = fib(n-1)+fib(n-2);
+        
         return fibo;
     }
 };
