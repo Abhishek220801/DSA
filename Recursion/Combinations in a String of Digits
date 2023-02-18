@@ -11,6 +11,8 @@ void strOfDigit(string number, int index, string output){
 
     //with space 
     output.push_back(' ');
+    
+    //to avoid duplicates because of space after last digit
     if(number[index+1]!='\0')
     {
         strOfDigit(number,index+1,output);
