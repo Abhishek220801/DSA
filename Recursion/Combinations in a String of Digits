@@ -1,0 +1,18 @@
+void strOfDigit(string number, int index, string output){
+    //base case 
+    if(index==number.length()){
+        cout<<output<<endl;
+        return;
+    }
+
+    //no space
+    output.push_back(number[index]);
+    strOfDigit(number,index+1,output);
+
+    //with space 
+    output.push_back(' ');
+    if(number[index+1]!='\0')
+    {
+        strOfDigit(number,index+1,output);
+    }     
+}
