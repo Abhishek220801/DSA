@@ -1,0 +1,8 @@
+int main(){
+
+    int array[]={1,2,3,4};
+    cout<<"Size of array = "<<sizeof(array)<<endl;
+    cout<<"Length of array = "<<sizeof(array)/sizeof(array[0])<<endl;
+
+    return 0;
+}
