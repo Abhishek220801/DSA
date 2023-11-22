@@ -1,0 +1,11 @@
+class Solution {
+public:
+
+    int helper(int ind, vector<int>& cost){
+        if(ind<=1) return cost[ind];
+        return (cost[ind] + min(helper(ind-1,cost),helper(ind-2,cost)));
+    }
+    int minCostClimbingStairs(vector<int>& cost) {
+        return min(helper(cost.size()-1,cost),helper(cost.size()-2,cost));
+    }
+};
