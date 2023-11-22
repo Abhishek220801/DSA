@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        return robHelper(nums,nums.size()-1);
+    }
+private:
+    int robHelper(vector<int>& nums, int i){
+        //base case
+        if(i<0) return 0;
+        //recurrence relation 
+        return max(robHelper(nums, i-2)+nums[i],robHelper(nums, i-1));
+    }
+};
