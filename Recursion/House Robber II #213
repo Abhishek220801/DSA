@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        if(nums.size()==1) return nums[0];
+        return max(robHelper(nums,0,nums.size()-1),robHelper(nums,1,nums.size()));
+    }
+private:
+    int robHelper(vector<int>& nums, int i, int n){
+        if(i>=n) return 0;
+        return max(robHelper(nums, i+2, n)+nums[i],robHelper(nums, i+1,n));
+    }
+};
