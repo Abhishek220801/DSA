@@ -1,3 +1,5 @@
+//not optimized solution, will give TLE
+
 class Solution {
 public:
     int climbStairs(int n) {
