@@ -1,0 +1,27 @@
+class Solution {
+
+private:
+    void helper(vector<int>& nums, int ind, vector<int>& curr, vector<vector<int>>& res){
+        if(ind==nums.size()){
+            res.push_back(curr);
+            return;
+        }
+        //include 
+        curr.push_back(nums[ind]);
+        helper(nums, ind+1, curr, res);
+        curr.pop_back();
+        
+        //exclude
+        helper(nums, ind+1, curr, res);
+        
+    }
+
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> curr;
+        vector<vector<int>> res;
+
+        helper(nums, 0, curr, res);
+        return res;
+    }
+};
