@@ -15,7 +15,6 @@ private:
 public:
     vector<string> generateParenthesis(int n) {
         vector<string> res;
-        string curr;
         helper(n,0,0,res,"");
         return res;
     }
