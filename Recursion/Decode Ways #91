@@ -1,0 +1,48 @@
+//n to 0
+
+class Solution {
+public:
+    int helper(string s, int ind){
+        if(ind<=0) return 1;
+        int res = 0;
+        int n = s.size();
+        
+        //single char 
+        if(s[ind]!='0')
+            res+=helper(s,ind-1);
+        //double char
+        if((s[ind-1]=='1')||(s[ind-1]=='2'&&s[ind]>='0'&&s[ind]<='6')){
+            res+=helper(s,ind-2);
+        }   
+        return res;
+    }
+    int numDecodings(string s) {
+        if(s[0]=='0') return 0;
+        return helper(s, s.size()-1);
+    }
+};
+
+//0 to n
+
+class Solution {
+public:
+    int helper(string s, int ind){
+        int n = s.size();
+        if(ind==n) return 1;
+        int res = 0;
+        
+        
+        //single char 
+        if(s[ind]!='0')
+            res+=helper(s,ind+1);
+        //double char
+        if((s[ind]=='1')||(s[ind]=='2'&&s[ind+1]>='0'&&s[ind+1]<='6')){
+            res+=helper(s,ind+2);
+        }   
+        return res;
+    }
+    int numDecodings(string s) {
+        if(s[0]=='0') return 0;
+        return helper(s, 0);
+    }
+};
