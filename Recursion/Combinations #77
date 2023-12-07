@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void helper(vector<vector<int>>& res, vector<int>& curr, int ind, int n, int k){
+        if(curr.size()==k){
+            res.push_back(curr);
+            return;
+        } 
+        if(ind>n) return;
+        //don't pick
+        helper(res,curr,ind+1,n,k);
+        //pick
+        curr.push_back(ind);
+        helper(res,curr,ind+1,n,k);
+        curr.pop_back();
+    }
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> res;
+        vector<int> curr;
+        helper(res,curr,1,n,k);
+        return res;
+    }
+};
