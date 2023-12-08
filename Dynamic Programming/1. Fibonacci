@@ -1,7 +1,5 @@
-/*TLE Eliminated
-Time => O(n) (since no repeated calls)
-Space => O(n) by Recursive Stack + O(n) by the storing vector or data structure => 2*O(n) => O(n)
-*/
+//Memoization or Top Down DP
+//T O(n) S O(2n) or O(n) -> Recursive stack space + Array space 
 
 class Solution {
 public:
@@ -13,6 +11,23 @@ public:
     int fib(int n) {
         vector<int> dp(n+1,-1);
         helper(dp,n);
+        return dp[n];
+    }
+};
+
+//Bottom Up DP or Iterative Way
+//Time: O(n) 
+//Space: O(n) no recursive stack space only array allocated memory
+
+class Solution {
+public:
+    int fib(int n) {
+        if(n==0) return 0;
+        vector<int>dp(n+1);
+        dp[0]=0; dp[1]=1;
+        for(int i=2;i<=n;i++){
+            dp[i]=dp[i-1]+dp[i-2];
+        }
         return dp[n];
     }
 };
