@@ -1,0 +1,18 @@
+// Top Down aka Memoization 
+
+class Solution {
+public:
+    int helper(vector<int>& dp, int ind){
+        if (ind<=1) return ind;
+        if(ind==2) return 1;
+        if(dp[ind]!=-1) return dp[ind];
+        return dp[ind]=helper(dp,ind-1)+helper(dp,ind-2)+helper(dp,ind-3);
+    }
+    int tribonacci(int n) {
+        if(n<=1) return n;
+        vector<int> dp(n+1,-1);
+        helper(dp,n);
+        return dp[n];
+    }
+};
+
