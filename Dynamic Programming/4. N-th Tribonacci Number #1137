@@ -29,3 +29,22 @@ public:
         return dp[n];
     }
 };
+
+//Space Optimization 
+
+class Solution {
+public:
+    int tribonacci(int n) {
+        if(n<=1) return n;
+        if(n==2) return 1;
+        int thirdlast=0, seclast=1, last=1, ans;
+        for(int i=3;i<=n;i++){
+            ans=last+seclast+thirdlast;
+            thirdlast = seclast;
+            seclast = last;
+            last = ans;
+        }
+        return ans;
+    }
+};
+
