@@ -1,0 +1,18 @@
+//Recursive -> TLE 
+
+class Solution {
+public:
+    int helper(string& s1, string& s2, int ind1, int ind2){
+        //base case
+        if(ind1>=s1.length()) return s2.length()-ind2;
+        if(ind2>=s2.length()) return s1.length()-ind1;
+        //if chars same 
+        if(s1[ind1]==s2[ind2])
+            return helper(s1,s2,ind1+1,ind2+1);
+        //if chars different
+        return 1+min({helper(s1,s2,ind1+1,ind2+1),helper(s1,s2,ind1+1,ind2),helper(s1,s2,ind1,ind2+1)});
+    }
+    int minDistance(string word1, string word2) {
+        return helper(word1,word2,0,0);
+    }
+};
