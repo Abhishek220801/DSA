@@ -3,9 +3,7 @@
 class Solution {
 public:
     bool helper(vector<int>& nums, int target, int ind){
-        if(target == 0) return true;
-        if(ind>=nums.size()) return false;
-        if(target<0) return false;
+        if(ind>=nums.size()) return target==0;
         
         if(helper(nums,target-nums[ind],ind+1))
             return true;
