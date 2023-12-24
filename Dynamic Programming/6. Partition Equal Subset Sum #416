@@ -1,0 +1,27 @@
+//Recursive (TLE)
+
+class Solution {
+public:
+    bool helper(vector<int>& nums, int target, int ind){
+        if(target == 0) return true;
+        if(ind>=nums.size()) return false;
+        if(target<0) return false;
+        
+        if(helper(nums,target-nums[ind],ind+1))
+            return true;
+        if(helper(nums,target,ind+1))
+            return true;
+        return false;
+    }
+    bool canPartition(vector<int>& nums) {
+        int n = nums.size();
+        int sum = 0;
+        for(int num: nums)
+            sum+=num;
+        
+        if(sum%2!=0) return false;
+        int target = sum/2;
+
+        return helper(nums,target,0);
+    }
+};
