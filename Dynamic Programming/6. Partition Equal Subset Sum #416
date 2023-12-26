@@ -56,3 +56,40 @@ public:
         return helper(nums, target, 0, dp);
     }
 };
+
+
+//Bottom Up 
+
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int n = nums.size();
+        int sum = 0;
+        for(int num : nums)
+            sum += num;
+        
+        if(sum % 2 != 0) return false;
+        
+        int target = sum / 2;
+        vector<vector<int>> dp(n+1, vector<int> (target + 1, false)); // Initialize with -1
+        //initial conditions
+        //1st col - target 0 but there are elements  
+        for(int i=0;i<=n;i++)
+            dp[i][0] = true;
+        //1st row - target not 0 and no elements 
+        for(int j=1;j<=target;j++)
+            dp[0][j] = false;
+        
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=target;j++){
+                //inc
+                if(nums[i-1]<=j)
+                    dp[i][j]=dp[i-1][j-nums[i-1]];
+                //exc
+                dp[i][j] = dp[i][j] || dp[i-1][j];
+            }
+        }
+        return dp[n][target];
+    }
+};
+
