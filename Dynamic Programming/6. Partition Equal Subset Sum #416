@@ -93,3 +93,38 @@ public:
     }
 };
 
+
+//Space Optimization 
+
+class Solution {
+public:
+    //Space Optimization 
+    bool canPartition(vector<int>& nums) {
+        int n = nums.size();
+        int sum = 0;
+        for(int num : nums)
+            sum += num;
+        
+        if(sum % 2 != 0) return false;
+        
+        int target = sum / 2;
+        vector<int> prev (target+1,false);
+        vector<int> curr (target+1,false);
+        //initial conditions
+        prev[0]=true; curr[0]=true;
+        
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=target;j++){
+                //inc
+                if(nums[i-1]<=j)
+                    curr[j]=prev[j-nums[i-1]];
+                //exc
+                curr[j] = curr[j] || prev[j];
+            }
+            prev = curr;
+        }
+        return curr[target];
+    }
+};
+
+
