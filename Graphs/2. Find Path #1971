@@ -25,3 +25,33 @@ public:
         return dfs(n, graph, source, destination, visited);
     }
 };
+
+
+//Adjacency List and DFS 
+
+class Solution {
+public:
+    //adj list and DFS
+    bool dfs(vector<vector<int>> &graph, int src, int dest, vector<bool>& vis) {
+        if(src == dest) return true;
+        vis[src] = true;
+
+       for(auto neighbor: graph[src]){
+           if(!vis[neighbor] && dfs(graph,neighbor,dest,vis))
+               return true;
+       }
+        return false;
+    }
+
+    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+        vector<vector<int>> graph(n, vector<int>()); 
+        vector<bool> vis(n,false);
+
+        for(auto edge : edges) {
+            int u = edge[0], v = edge[1];
+            graph[u].push_back(v);
+            graph[v].push_back(u);
+        }
+        return dfs(graph, source, destination, vis);
+    }
+};
