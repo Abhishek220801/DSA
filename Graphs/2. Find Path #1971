@@ -1,0 +1,27 @@
+//Adjacency Matrix and DFS solution 
+
+class Solution {
+public:
+    bool dfs(int n, vector<vector<int>> &graph, int src, int dest, vector<bool>& vis) {
+        if(src == dest) return true;
+        vis[src] = true;
+        for(int i = 0; i<n; i++) {
+            if(graph[src][i] && !vis[i]) {
+                if(dfs(n, graph, i, dest, vis))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+        vector<vector<int>> graph(n, vector<int>(n, 0)); // can keep of bool as well
+        vector<bool> visited(n, false);
+        for(auto edge : edges) {
+            int u = edge[0], v = edge[1];
+            graph[u][v] = 1;
+            graph[v][u] = 1;
+        }
+        return dfs(n, graph, source, destination, visited);
+    }
+};
