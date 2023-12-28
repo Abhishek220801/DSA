@@ -1,0 +1,29 @@
+//DFS Approach 
+
+class Solution {
+public:
+
+//perform dfs traversal to explore the graph 
+void dfs(int node, vector<vector<int>>& graph, vector<bool>& visited){
+  visited[node]=true;
+  
+  for(int neighbor: graph[node]){
+    if(!visited[neighbor])
+      dfs(neighbor,graph,visited);
+  }
+}
+
+//count the number of connected components 
+int countConnectedComponents(vector<vector<int>>& graph){
+  int n = graph.size();
+  vector<bool> visited(n, false);
+  int components = 0;
+
+  for(int i=0;i<n;i++){
+    if(!visited[i]){
+      dfs(i,graph,visited);
+      components++;
+    }
+  }
+  return components;
+}
