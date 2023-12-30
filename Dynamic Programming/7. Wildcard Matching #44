@@ -67,7 +67,7 @@ public:
 };
 
 
-//Bottom Up 
+//Bottom Up / Tabulation
 
 class Solution {
 public:
