@@ -26,11 +26,14 @@ class Solution {
                 return helper(s,p,i-1,j);
             else return false;
         }
+        return false;
+    }
 public:
     bool isMatch(string s, string p) {
         return helper(s,p,s.size()-1,p.size()-1);
     }
 };
+
 
 
 //Memoization 
@@ -68,12 +71,5 @@ public:
     bool isMatch(string s, string p) {
         vector<vector<int>>dp (s.size(), vector<int> (p.size(), -1));
         return helper(s,p,s.size()-1,p.size()-1,dp);
-    }
-};
-        return false;
-    }
-public:
-    bool isMatch(string s, string p) {
-        return helper(s,p,s.size()-1,p.size()-1);
     }
 };
