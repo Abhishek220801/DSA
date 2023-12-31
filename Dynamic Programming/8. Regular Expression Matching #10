@@ -26,6 +26,12 @@ class Solution {
                 return helper(s,p,i-1,j);
             else return false;
         }
+public:
+    bool isMatch(string s, string p) {
+        return helper(s,p,s.size()-1,p.size()-1);
+    }
+};
+
 
 //Memoization 
 
