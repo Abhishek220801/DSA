@@ -92,3 +92,27 @@ public:
         return res;
     }
 };
+
+or shorthand of the above solution Bottom Up 
+
+class Solution {
+public:
+    int countSubstrings(string s) {
+        int n = s.length();
+        vector<vector<bool>> dp(n, vector<bool> (n, false));
+        int res = 0;
+
+        for(int l=1;l<=n;l++){
+            for(int i=0;i<=n-l;i++){
+                int j = i+l-1;
+                //single char
+                if(i==j) dp[i][j]=true;
+                //more chars 
+                else if(s[i]==s[j] && (j == i+1 || dp[i+1][j-1])) 
+                    dp[i][j] = true;
+                if(dp[i][j]) res++;
+            }
+        }
+        return res;
+    }
+};
