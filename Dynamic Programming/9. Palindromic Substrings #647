@@ -33,7 +33,7 @@ public:
     }
 };
 
-//diagonal-wise filling of 2D dp 
+//diagonal-wise filling of 2D dp (GAP Method/Stategy)
 class Solution {
 public:
 
