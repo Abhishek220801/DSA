@@ -66,3 +66,29 @@ public:
         return res;
     }
 };
+
+//Bottom Up DP (Gap)
+
+class Solution {
+public:
+    int countSubstrings(string s) {
+        int n = s.length();
+        vector<vector<bool>> dp(n, vector<bool> (n, false));
+        int res = 0;
+
+        for(int l=1;l<=n;l++){
+            for(int i=0;i<=n-l;i++){
+                int j = i+l-1;
+                //single char
+                if(i==j) dp[i][j]=true;
+                //two chars 
+                else if(j == i+1) dp[i][j] = (s[i]==s[j]);
+                //more chars 
+                else if(s[i]==s[j]) 
+                    dp[i][j] = dp[i+1][j-1];
+                if(dp[i][j]) res++;
+            }
+        }
+        return res;
+    }
+};
