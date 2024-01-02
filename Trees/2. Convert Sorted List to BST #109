@@ -1,7 +1,10 @@
 class Solution {
 public:
     TreeNode* helper(vector<int>& v, int l, int r){
+            //base case 
             if(l>r) return NULL;
+
+            //binary search to convert array to BST
             int m = (l+r)/2;
             TreeNode* root = new TreeNode(v[m]);
             root->left = helper(v,l,m-1);
@@ -10,6 +13,7 @@ public:
     }
 
     TreeNode* sortedListToBST(ListNode* head) {
+        //converting LL to array 
         vector<int> v;
         while(head){
             v.push_back(head->val);
