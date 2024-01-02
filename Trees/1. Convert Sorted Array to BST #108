@@ -1,0 +1,14 @@
+class Solution {
+public:
+        TreeNode* helper(int l, int r, vector<int>& nums){
+            if(l>r) return NULL;
+            int m = (l+r)/2;
+            TreeNode* root = new TreeNode(nums[m]);
+            root->left = helper(l,m-1,nums);
+            root->right = helper(m+1,r,nums);
+            return root;
+        }
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        return helper(0,nums.size()-1,nums);
+    }
+};
