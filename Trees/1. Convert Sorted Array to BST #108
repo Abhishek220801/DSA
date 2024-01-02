@@ -1,8 +1,11 @@
 class Solution {
 public:
         TreeNode* helper(int l, int r, vector<int>& nums){
+            //base condition
             if(l>r) return NULL;
-            int m = (l+r)/2;
+
+            //using binary search to fill the BST 
+            int m = (l+r)/2;   //middle elt.
             TreeNode* root = new TreeNode(nums[m]);
             root->left = helper(l,m-1,nums);
             root->right = helper(m+1,r,nums);
