@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void helper(int i,string& digits, string& curr, vector<string>& res, vector<string>& keymap){
+        //base case - if ind reaches out of bound
+        if(i==digits.size()){
+            res.push_back(curr);
+            return;
+        }
+        //for every char in keymap's digit at ith index excluding the char '0' representing the no.0
+        for(auto c: keymap[digits[i]-'0']){
+            curr.push_back(c);
+            helper(i+1,digits,curr,res,keymap);
+            curr.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        vector<string> res;
+        if(digits.empty()) return res;
+        vector<string> keymap({"","","abc","def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"});
+        string curr = "";
+        helper(0,digits,curr,res,keymap);
+        return res;
+    }
+};
