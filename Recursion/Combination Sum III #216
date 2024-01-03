@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void helper(int ind, int sum, int n, int k, vector<int>& curr, vector<vector<int>>& res){
+        //base condition 
+        if(sum==n && k==0){
+            res.push_back(curr);
+            return;
+        }
+        if(sum>n) return;
+
+        for(int i=ind;i<=9;i++){
+            if(i>n) break;
+            curr.push_back(i);
+            helper(i+1,sum+i,n,k-1,curr,res);
+            curr.pop_back();
+        }
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<int> curr;
+        vector<vector<int>> res;
+        helper(1,0,n,k,curr,res);
+        return res;
+    }
+};
