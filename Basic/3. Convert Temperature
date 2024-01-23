@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    vector<int> v;
+    int T = 27;
+    int K = T + 273.15;
+    int F = T*1.80 + 32;
+    v.push_back(K);
+    v.push_back(F);
+    for(int i=0;i<2;i++)
+        cout<<v[i]<<" ";
+}
