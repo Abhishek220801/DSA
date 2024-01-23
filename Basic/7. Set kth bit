@@ -1,0 +1,11 @@
+https://www.geeksforgeeks.org/problems/set-kth-bit3724/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+
+class Solution
+{
+public:
+    int setKthBit(int N, int K)
+    {
+        return N | 1<<K;
+    }
+    
+};
