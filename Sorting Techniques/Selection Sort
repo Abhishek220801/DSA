@@ -1,11 +1,11 @@
-void selectSort(int arr[], int n){
+void selectionSort(int arr[], int n){
     for(int i=0;i<n-1;i++){
-        int minIndex=i;
+        int ind = i;
         for(int j=i+1;j<n;j++){
-            if(arr[minIndex]>arr[j]){
-                minIndex=j;
+            if(arr[j]>arr[j+1]){
+                ind=j;
             }
+            swap(arr[i],arr[ind]);
         }
-        swap(arr[minIndex],arr[i]);
     }
 }
