@@ -1,0 +1,14 @@
+//brute force - O(N^2)
+
+int majorityElement(vector<int>& nums) {
+      for(int val: nums){
+          int freq = 0;
+          for(int el: nums){
+              if(val==el){
+                  freq++;
+              }
+              return val;
+          }
+      }
+      return -1;
+}
