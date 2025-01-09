@@ -30,3 +30,15 @@ int majorityElement(vector<int>& nums) {
         }
         return ans;
     }
+
+//Most optimal - Moore's Voting Algorithm - O(N)
+
+int majorityElement(vector<int>& nums) {
+        int freq = 0, ans = 0;
+        for(int i=0; i<nums.size(); i++){
+            if(freq==0) ans = nums[i];
+            if(nums[i]==ans) freq++;
+            else freq--;
+        }
+        return ans;
+    }
