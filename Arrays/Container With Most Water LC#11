@@ -12,3 +12,18 @@ int maxArea(vector<int>& height) {
     }
     return mostWater;
 }
+
+//Optimized - Two Pointer Approach - O(N) 
+
+int maxArea(vector<int>& height) {
+    int mostWater = 0, i=0, j=height.size()-1;
+    while(i<j){
+        int w = j-i;
+        int h = min(height[i],height[j]);
+        int area = h*w;
+        mostWater = max(mostWater, area);
+        height[i]<height[j]?i++:j--; //lower height boundary will decide the amount of water stored in container, 
+        //so better move the lower ht ptr instead of other which doesn't contribute anything to contained water
+    }
+    return mostWater;
+}
