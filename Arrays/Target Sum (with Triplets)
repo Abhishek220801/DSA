@@ -19,3 +19,40 @@ int main(){
 
     return 0;
 }
+
+
+
+
+//printing triplets 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    
+    vector<int> arr = {10,20,30,40,50,60,15,25,35,65};
+    int sum = 80;
+    vector<vector<int>> triplets;
+    
+    for(int i=0;i<arr.size();i++){
+        for(int j=i+1;j<arr.size();j++){
+            for(int k=j+1;k<arr.size();k++){
+                if(arr[i]+arr[j]+arr[k]==sum){
+                    vector<int> pair;
+                    pair.push_back(arr[i]);
+                    pair.push_back(arr[j]);
+                    pair.push_back(arr[k]);
+                    triplets.push_back(pair);
+                };
+            }
+        }
+    }
+    
+    for (const auto& triplet : triplets) {  // Iterate through each row (inner vector)
+        for (const auto& element : triplet) {  // Iterate through each element in the row
+            cout << element << " ";  // Print the element
+        }
+        cout << endl;  // Move to the next line after each row
+    }
+}
