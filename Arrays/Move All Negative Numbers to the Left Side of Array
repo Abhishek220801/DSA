@@ -1,4 +1,5 @@
 //3-pointer approach in-place algorithm
+//TC - linear, SC - constant
 
 void moveNegatives(vector<int>& nums){
     int l,i,h;
@@ -12,6 +13,25 @@ void moveNegatives(vector<int>& nums){
             swap(nums[i],nums[h]);
             l++;
             h--;
+        }
+    }
+}
+
+
+//2-pointer approach in-place 
+//Dutch National Flag Algorithm 
+//TC - O(N), SC - O(1) (same as 3-pointer, but still a bit better in terms of space efficiency)
+
+void moveNegatives(vector<int>& nums){
+    int l,h;
+    l=0, h=nums.size()-1;
+    while(l<h){
+        if(nums[l]<0){
+            l++;
+        } else if(nums[h]>0){
+            h--;
+        }else{
+            swap(nums[l],nums[h]);
         }
     }
 }
