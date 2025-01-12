@@ -14,3 +14,37 @@ void moveNegatives(vector<int>& nums){
         }
     }
 }
+
+
+//Optimal Approach - O(N)
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        for(int i=0;i<nums.size();i++){
+            int index = abs(nums[i]);
+            if(nums[index]<0) return index;
+            else nums[index]*=-1;
+        }
+        return -1;
+    }
+};
+
+//even more optimized
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int ans = -1;
+        for(int i=0;i<nums.size();i++){
+            int index = abs(nums[i]);
+        
+            if(nums[index]<0){
+                ans = index;
+                break;
+            } 
+            else nums[index]*=-1;
+        }
+        return ans;
+    }
+};
