@@ -1,0 +1,17 @@
+//3-pointer approach in-place algorithm
+
+void moveNegatives(vector<int>& nums){
+    int l,i,h;
+    i=l=0, h=nums.size()-1;
+    while(l!=nums.size()){
+        if(nums[l]<0){
+            swap(nums[i],nums[l]);
+            l++;
+            i++;
+        } else{
+            swap(nums[i],nums[h]);
+            l++;
+            h--;
+        }
+    }
+}
