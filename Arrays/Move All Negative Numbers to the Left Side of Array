@@ -19,7 +19,6 @@ void moveNegatives(vector<int>& nums){
 
 
 //2-pointer approach in-place 
-//Dutch National Flag Algorithm 
 //TC - O(N), SC - O(1) (same as 3-pointer, but still a bit better in terms of space efficiency)
 
 void moveNegatives(vector<int>& nums){
