@@ -1,0 +1,12 @@
+//deleteFromBeginning -> removes the head of the LL and updates the head to the next node
+//O(1) ST
+
+void deleteAtBeginning(Node* &head){
+    Node* temp = head;
+    if(temp==NULL){
+        return;
+    }
+    head = head->next;
+    temp->next = NULL;
+    delete temp;
+}
