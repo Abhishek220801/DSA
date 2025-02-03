@@ -18,12 +18,14 @@ void insertAtBeginning(Node* &head, Node* &tail, int data){
 //(preferred)
 
 void insertAtBeginning(Node* &head, Node* &tail, int data){
+    //handling Empty LL case
     if(tail==NULL){
         Node* newNode = new Node(data);
         head = newNode;
         tail = newNode;
         return;  
     }
+    //non empty LL case
     Node* newNode = new Node(data);
     newNode->next = head;
     head = newNode;
