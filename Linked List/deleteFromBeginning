@@ -1,7 +1,7 @@
 //deleteFromBeginning -> removes the head of the LL and updates the head to the next node
 //O(1) ST
 
-void deleteAtBeginning(Node* &head){
+void deleteFromBeginning(Node* &head){
     Node* temp = head;
     if(temp==NULL){
         return;
