@@ -14,3 +14,18 @@ void insertAtEnd(Node* &head, Node* &tail, int data){
     //step3
     tail = newNode;
 }
+
+//OR
+//(preferred)
+
+void insertAtEnd(Node* &head, Node* &tail, int data){
+    if(head==NULL){
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    Node* newNode = new Node(data);
+    tail->next = newNode;
+    tail = newNode;
+}
