@@ -1,11 +1,15 @@
 //insertAtBeginning -> attaches a new node at the start of linked list
 ST -> O(1)
 
-void insertAtBeginning(Node* &head, int data){
+void insertAtBeginning(Node* &head, Node* &tail, int data){
     //step1
     Node* newNode = new Node(data);
     //step2
     newNode->next = head;
     //step3
+    //handling the empty LL case
+    if(tail==NULL){
+        tail=newNode;
+    }
     head = newNode;
 }
