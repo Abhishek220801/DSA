@@ -13,3 +13,18 @@ void insertAtBeginning(Node* &head, Node* &tail, int data){
     }
     head = newNode;
 }
+
+//OR
+//(preferred)
+
+void insertAtBeginning(Node* &head, Node* &tail, int data){
+    if(tail==NULL){
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+        return;  
+    }
+    Node* newNode = new Node(data);
+    newNode->next = head;
+    head = newNode;
+}
