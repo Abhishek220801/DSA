@@ -11,3 +11,18 @@ Node* reverse(Node* &prev, Node* &curr){
     
     return reverse(curr,temp);
 }
+
+//Iterative Approach / using loop 
+
+Node* reverseUsingLoop(Node* &head){
+    Node* prev = NULL;
+    Node* curr = head;
+    
+    while(curr!=NULL){
+        Node* temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+    }
+    return prev;
+}
