@@ -1,0 +1,13 @@
+//Recursive Approach 
+
+Node* reverse(Node* &prev, Node* &curr){
+    //base case 
+    if(curr == NULL){
+        return prev;
+    }
+    //1 case solve then recursion sambhalega 
+    Node* temp = curr->next;
+    curr->next = prev;
+    
+    return reverse(curr,temp);
+}
