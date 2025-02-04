@@ -32,3 +32,40 @@ void insertAtPosition(int pos, int data, Node* &head, Node* &tail){
     curr->prev = newNode;
     newNode->next = curr;
 }
+
+//OR
+
+
+void insertAtPosition(int pos, int data, Node* &head, Node* &tail){
+    int len = findLength(head);
+    //LL empty
+    if(head==NULL){
+        cout<<"Empty LL"<<endl;
+        return;
+    }
+    //Single Node in LL
+    if(pos<=1){
+        insertAtHead(head,tail,data);
+        return;
+    }
+    //End or out of bound position case
+    if(pos>len){
+        insertAtEnd(head,tail,data);
+        return;
+    }
+    //handling all the cases in between
+    int i = 1;
+    Node* prevNode = head;
+    while(i<pos-1){
+        prevNode = prevNode->next;
+        i++;
+    }
+    Node* newNode = new Node(data);
+    // Node* curr = prevNode->next;
+    
+    prevNode->next->prev = newNode;
+    newNode->next = prevNode->next;
+    prevNode->next = newNode;
+    newNode->prev = prevNode;
+}
+
