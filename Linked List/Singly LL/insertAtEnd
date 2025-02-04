@@ -1,0 +1,33 @@
+//insertAtEnd -> attaches a new node at the end of the LL
+//TC-> O(n), SC-> O(1)
+
+void insertAtEnd(Node* &head, Node* &tail, int data){
+    //step1
+    Node* newNode = new Node(data);
+    //step2
+    if(tail==NULL){
+        head=newNode;
+        tail=newNode;
+    }else{
+        tail->next = newNode;
+    }
+    //step3
+    tail = newNode;
+}
+
+//OR
+//(preferred)
+
+void insertAtEnd(Node* &head, Node* &tail, int data){
+     //handling Empty LL case
+    if(head==NULL){
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    //non-empty LL case
+    Node* newNode = new Node(data);
+    tail->next = newNode;
+    tail = newNode;
+}
