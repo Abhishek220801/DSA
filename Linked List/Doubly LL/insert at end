@@ -1,0 +1,15 @@
+//O(1) ST (if we already have tail pointer)
+
+void insertAtEnd(Node* &head, Node* &tail, int data){
+    if(head==NULL){
+        //LL is empty
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    Node* newNode = new Node(data);
+    tail->next = newNode;
+    newNode->prev = tail;
+    tail = newNode;
+}
