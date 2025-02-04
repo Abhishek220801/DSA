@@ -1,0 +1,60 @@
+//O(N) TC, O(1) SC
+
+void deleteNode(int pos, Node* &head, Node* &tail){
+    //empty LL
+    if(head==NULL){
+        cout<<"LL is empty";
+        return;
+    }
+    //if only one node exists
+    if(head->next == NULL){
+        Node* temp = head;
+        head = NULL;
+        tail = NULL;
+        delete temp;
+        return;
+    }
+    int len = findLength(head);
+    //out of bound position 
+    if(pos>len){
+        cout<<"please enter a valid position"<<endl;
+        return;
+    }
+    if(pos<=0){
+        cout<<"Invalid position given"<<endl;
+        return;
+    }
+    //delete first node 
+    if(pos==1){
+        Node* temp = head;
+        head = head->next;
+        head->prev = NULL;
+        temp->next = NULL;
+        delete temp;
+        return;
+    }
+    //delete from end
+    if(pos==len){
+        //delete last node 
+        Node* temp = tail;
+        tail = tail->prev;
+        temp->prev = NULL;
+        tail->next = NULL;
+        delete temp;
+        return;
+    }
+    //delete from middle
+    int i = 1;
+    Node* left = head;
+    while(i<pos-1){
+        left = left->next;
+        i++;
+    }
+    Node* curr = left->next;
+    Node* right = curr->next;
+    left->next = right; 
+    right->prev = left;
+    curr->prev = NULL;
+    curr->next = NULL;
+    delete curr;
+}
