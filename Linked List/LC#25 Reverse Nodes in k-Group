@@ -1,0 +1,33 @@
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* temp = head;  //temporary pointer used to traverse the list
+        int count = 0;  //to keep track of how many nodes we have seen so far
+
+        while(temp!=NULL && count<k){  //checks whether there are at least k nodes to reverse //temp != NULL: Ensures the list is not empty.//count < k: Ensures that we have not traversed fewer than k nodes.
+            temp = temp->next;
+            count++;
+        }
+
+        if(count<k){
+            return head; //If there are fewer than k nodes, we simply return the head without making any changes. This is because, in this case, we do not reverse the nodes.
+        }
+
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+        ListNode* forward = NULL;  // temporary pointer used to store the next node so that we don’t lose track of the list.
+
+        for(int i=0; i<k; i++){
+            forward = curr->next;
+            curr -> next = prev;
+            prev = curr;
+            curr = forward;
+        }
+
+        if(forward!=NULL){
+            head->next = reverseKGroup(forward,k); //connect the first k reversed nodes to the result of the next reversed group of nodes. This ensures that the reversed segments are properly connected.
+        }
+
+        return prev; //return prev, which points to the new head of the reversed segment.
+    }
+};
