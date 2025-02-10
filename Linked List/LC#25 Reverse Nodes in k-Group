@@ -24,7 +24,7 @@ public:
             curr = forward;
         }
 
-        if(forward!=NULL){
+        if(forward!=NULL){ //After reversing the first k nodes, if there are still nodes left to reverse (forward != NULL), we recursively call reverseKGroup to reverse the next group of k nodes.
             head->next = reverseKGroup(forward,k); //connect the first k reversed nodes to the result of the next reversed group of nodes. This ensures that the reversed segments are properly connected.
         }
 
