@@ -1,0 +1,24 @@
+//Detect Cycles in a LL
+//Floyd Cycle Detection 
+//Tortoise and Hare Algorithm 
+//https://leetcode.com/problems/linked-list-cycle/
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head == NULL) return false;
+    
+        ListNode* slow = head;
+        ListNode* fast  = head;
+    
+        while(fast!=NULL && fast->next!=NULL){
+            slow = slow->next; //Move slow ptr by 1 step
+            fast = fast->next->next; //Move fast ptr by 2 steps
+        
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false; //No cycle
+    }
+};
