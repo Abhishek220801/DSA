@@ -1,0 +1,106 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node(){
+        this->data = 0;
+        this->next = NULL;
+    }
+    Node(int data){
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+void print(Node* head){
+    Node* temp = head;
+    while(temp!= NULL){
+        cout<<temp->data<<"->";
+        temp = temp->next;
+    }
+    cout<<"NULL";
+};
+
+Node* insertAtHead(Node* &head, int data){
+    Node* newNode = new Node(data);
+    if(head==NULL){
+        head = newNode;
+        return newNode;
+    }
+    newNode->next = head;
+    return newNode;
+}
+
+int getLength(Node* head){
+    Node* temp = head;
+    int k = 0;
+    while(temp!=nullptr){
+        temp = temp->next;
+        k++;
+    }
+    return k;
+}
+
+Node* deleteNode(Node* &head, int pos){
+    if(head==NULL||head->next == NULL){
+        return NULL;
+    } 
+    Node* temp = head;
+    while(temp->next->next != NULL){
+        temp = temp->next;
+    }
+    delete temp->next;
+    temp ->next = NULL;
+    return head;
+}
+
+bool isPresentInLL(Node* head, int val){
+    Node* temp = head;
+    while(temp!=NULL){
+        if(temp->data == val) return true;
+        temp = temp ->next;
+    }
+    return false;
+}
+
+int main() {
+	// your code goes here
+    Node* first = new Node(10);  
+    Node* second = new Node(20);  
+    Node* third = new Node(30);  
+    Node* fourth = new Node(40);  
+    Node* fifth = new Node(50);  
+    
+    first->next = second;
+    second->next = third;
+    third->next = fourth;
+    fourth->next = fifth;
+    
+    Node* head = first;
+    Node* tail = fifth;
+    
+    print(head);
+    cout<<endl;
+    cout<<"length of the LL: "<<getLength(head);
+    head = insertAtHead(head,90);
+    cout<<endl;
+    print(head);
+    cout<<endl;
+    cout<<"length of the LL: "<<getLength(head);
+    // deleteFromHead(head);
+    cout<<endl;
+    print(head);
+    cout<<endl;
+    cout<<"length of the LL: "<<getLength(head);
+    head = insertAtHead(head,800);
+    cout<<endl;
+    print(head);
+    cout<<endl;
+    cout<<"length of the LL: "<<getLength(head);
+    cout<<endl;
+    cout<<isPresentInLL(head,50);
+}
