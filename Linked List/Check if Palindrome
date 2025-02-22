@@ -1,0 +1,40 @@
+bool isPalindrome(Node* &head){
+    if(head==NULL || head->next ==NULL){
+        return true; //an empty or single-element list is a palindrome
+    }
+    
+    //Step 1: find middle node using slow and fast pointers
+    Node* slow = head;
+    Node* fast = head;
+    
+    //move slow to the middle, fast to the end 
+    while(fast!= NULL){
+        fast = fast->next;
+        if(fast!=NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+    }
+    
+    //Step 2: Reverse the second half of the list
+    Node* prev = NULL;
+    Node* curr = slow;
+    while(curr){      //other way of saying while(curr!=NULL)
+        Node* nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    
+    //Step 3: Compare the first and second halves of the list
+    Node* temp1 = head;
+    Node* temp2 = prev;
+    while(temp2!=NULL){
+        if(temp1->data != temp2->data){
+            return false;  //data didn't match, not palindrome
+        }
+        temp1 = temp1 ->next;
+        temp2 = temp2 -> next;
+    } 
+    return true; //if all values matches, it's a palindrome
+}
