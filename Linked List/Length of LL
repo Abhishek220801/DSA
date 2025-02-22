@@ -1,0 +1,9 @@
+int getLength(Node* head){
+    Node* temp = head;
+    int k = 0;
+    while(temp!=nullptr){
+        temp = temp->next;
+        k++;
+    }
+    return k;
+}
