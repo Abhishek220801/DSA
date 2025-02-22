@@ -1,0 +1,8 @@
+bool isPresentInLL(Node* head, int val){
+    Node* temp = head;
+    while(temp!=NULL){
+        if(temp->data == val) return true;
+        temp = temp ->next;
+    }
+    return false;
+}
