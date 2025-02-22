@@ -1,16 +1,15 @@
-
-    ListNode* deleteDuplicates(ListNode* head) {
-        ListNode* curr = head;
-        while (curr != NULL && curr->next != NULL) {
-            if (curr->val == curr->next->val) {
-                // Skip the duplicate node
-                ListNode* temp = curr->next;
-                curr->next = curr->next->next;
-                delete temp; // Delete the duplicate
-            } else {
-                // Move to the next node only if no deletion
-                curr = curr->next;
-            }
+ListNode* deleteDuplicates(ListNode* head) {
+    ListNode* curr = head;
+    while (curr != NULL && curr->next != NULL) {
+        if(curr->val == curr->next->val) {
+            // Skip the duplicate node
+            ListNode* temp = curr->next;
+            curr->next = curr->next->next;
+            delete temp; // Delete the duplicate
+        } else {
+            // Move to the next node only if no deletion
+            curr = curr->next;
         }
-        return head;
     }
+    return head;
+}
