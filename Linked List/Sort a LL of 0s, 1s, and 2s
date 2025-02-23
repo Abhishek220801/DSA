@@ -31,9 +31,10 @@ void sortZOTs(Node* &head){
 ## Approach 2: By changing/manipulating links/pointers
 
 Node* sort2(Node* head){
+    //empty list or single element, no sorting needed
     if(!head && !(head->next)) return head;
     
-    //Creating dummy nodes
+    //Creating dummy nodes to represent start of three lists. Dummy nodes to help avoid null pointer issue when adding nodes to the lists
     Node* zeroD = new Node(-1);
     Node* oneD = new Node(-1);
     Node* twoD = new Node(-1);
@@ -41,12 +42,13 @@ Node* sort2(Node* head){
     //Initialize current pointers for three lists
     Node* zero = zeroD, *one = oneD, *two = twoD;
     
-    //Traverse the list
+    //Traverse the OG list
     Node* curr = head;
     while(curr!=NULL){
+        //check the value of the current node and append it to the corresponding list
         if(curr->data == 0){
             //data of curr if 0, append it to to ptr one and update one
-            zero->next = curr;
+            zero->next = curr; 
             zero = zero->next;
         }
         else if(curr->data == 1){
@@ -57,23 +59,29 @@ Node* sort2(Node* head){
             two->next = curr;
             two = two->next;
         }
-        curr = curr->next;
+        curr = curr->next;  //Move to the next node in the OG list
     }
     //Combine the three lists 
     if(oneD->next)
+        //if the 'one' list is not empty, link the 'zero' list to the 'one' list
         zero->next = oneD->next;
     else
         zero->next = twoD->next;
-    
+
+    //Link the 'one' list to the 'two' list (if there are any 1's)
     one->next = twoD->next;
+
+    //Set the 'next' of the 'two' list to null to mark the end of the final list
     two->next = NULL;
     
-    //Updated head
+    //Updated head - the sorted list starts from zeroD->next (since zeroD is a dummy node)
     head = zeroD->next;
-    
+
+    //Clean up the dummy nodes to avoid memory leaks
     delete zeroD;
     delete oneD;
     delete twoD;
-    
+
+    //return the head of the sorted LL
     return head;
 }
