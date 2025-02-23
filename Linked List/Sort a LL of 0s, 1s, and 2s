@@ -27,3 +27,53 @@ void sortZOTs(Node* &head){
         temp = temp->next; 
     }
 }
+
+## Approach 2: By changing/manipulating links/pointers
+
+Node* sort2(Node* head){
+    if(!head && !(head->next)) return head;
+    
+    //Creating dummy nodes
+    Node* zeroD = new Node(-1);
+    Node* oneD = new Node(-1);
+    Node* twoD = new Node(-1);
+    
+    //Initialize current pointers for three lists
+    Node* zero = zeroD, *one = oneD, *two = twoD;
+    
+    //Traverse the list
+    Node* curr = head;
+    while(curr!=NULL){
+        if(curr->data == 0){
+            //data of curr if 0, append it to to ptr one and update one
+            zero->next = curr;
+            zero = zero->next;
+        }
+        else if(curr->data == 1){
+            one->next = curr;
+            one = one->next;
+        }
+        else{
+            two->next = curr;
+            two = two->next;
+        }
+        curr = curr->next;
+    }
+    //Combine the three lists 
+    if(oneD->next)
+        zero->next = oneD->next;
+    else
+        zero->next = twoD->next;
+    
+    one->next = twoD->next;
+    two->next = NULL;
+    
+    //Updated head
+    head = zeroD->next;
+    
+    delete zeroD;
+    delete oneD;
+    delete twoD;
+    
+    return head;
+}
