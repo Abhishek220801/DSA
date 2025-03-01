@@ -1,0 +1,15 @@
+# https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem
+
+void helper(SinglyLinkedListNode* head, int &positionFromTail, int &ans){
+    if(head==0) return;
+    helper(head->next, positionFromTail, ans);
+    
+    if(positionFromTail==0) ans = head->data;
+    positionFromTail--;
+}
+
+int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
+    int ans = -1;
+    helper(llist, positionFromTail, ans);
+    return ans;
+}
