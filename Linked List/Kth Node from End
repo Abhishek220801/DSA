@@ -1,5 +1,7 @@
 # https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem
 
+
+# RECURSIVE 
 void helper(SinglyLinkedListNode* head, int &positionFromTail, int &ans){
     if(head==0) return;
     helper(head->next, positionFromTail, ans);
@@ -12,4 +14,23 @@ int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
     int ans = -1;
     helper(llist, positionFromTail, ans);
     return ans;
+}
+
+#ITERATIVE
+int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
+    int len = 0;
+    SinglyLinkedListNode* temp = llist;
+    
+    while(temp!=NULL){
+        temp = temp->next;
+        len++;
+    }
+    if(len<positionFromTail) return -1;
+    
+    temp = llist;
+    
+    for(int i=1; i<len-positionFromTail; i++){
+        temp = temp->next;
+    }
+    return temp->data;
 }
