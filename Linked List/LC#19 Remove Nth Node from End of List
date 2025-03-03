@@ -7,12 +7,15 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
             count++;
         }
         count-=n;
+
+        // edge case - first node for delete karna ho 
         if(count==0){
             temp = head;
             head = head->next;
             delete temp;
             return head;
         }
+
         ListNode *curr = head, *prev = NULL;
 
         while(count--){
