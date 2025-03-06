@@ -1,0 +1,16 @@
+Node* arrToLL(int arr[], int n){
+    Node* head = NULL, *tail = NULL;
+    for(int i=0;i<n;i++){
+        if(head==NULL){
+            head = new Node(arr[i]);
+            tail = head;
+        }
+        else{
+            Node* temp = new Node(arr[i]);
+            tail ->next = temp;
+            temp->prev = tail;
+            tail = temp;
+        }
+    }
+    return head;
+}
