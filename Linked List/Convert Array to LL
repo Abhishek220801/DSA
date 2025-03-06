@@ -1,3 +1,5 @@
+//Iterative 
+
 Node* arrToLL(int arr[], int n){
     Node* head = NULL, *tail = NULL;
     for(int i=0;i<n;i++){
@@ -13,4 +15,16 @@ Node* arrToLL(int arr[], int n){
         }
     }
     return head;
+}
+
+
+//Recursive
+
+Node* createDLL(int arr[], int idx, int size, Node* back){
+    if(idx==size) return NULL;
+    
+    Node* temp = new Node(arr[idx]);
+    temp->prev = back;
+    temp->next = createDLL(arr, idx+1, size, temp);
+    return temp;
 }
