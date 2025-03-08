@@ -1,3 +1,5 @@
+//in place solution (OPTIMIZED)
+
 ListNode* deleteDuplicates(ListNode* head) {
     ListNode* curr = head;
     while (curr != NULL && curr->next != NULL) {
@@ -11,5 +13,29 @@ ListNode* deleteDuplicates(ListNode* head) {
             curr = curr->next;
         }
     }
+    return head;
+}
+
+
+//taking extra space - (Not Optimized)
+
+Node* removeDuplicates(Node* head){
+    vector<int> ans;
+    ans.push_back(head->data);
+    Node* curr = head->next;
+    while(curr){
+        if(curr->data!=ans[ans.size()-1]){
+            ans.push_back(curr->data);
+        }
+        curr = curr->next;
+    }
+    curr = head;
+    int index = 0;
+    while(index<ans.size()){
+        curr->data = ans[index];
+        index++;
+        curr = curr->next;
+    }
+    curr->prev->next = NULL;
     return head;
 }
