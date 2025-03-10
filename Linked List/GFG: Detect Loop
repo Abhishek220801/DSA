@@ -45,3 +45,17 @@ bool detectLoop(Node* head) {
       }
       return 0;
 }
+
+
+//Approach 3: Using Floyd Tortoise and Hare Algo
+
+bool detectLoop(Node* head) {
+        // your code here
+        Node* slow = head, *fast = head;
+        while(fast->next && fast->next->next){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow==fast) return 1;
+        }
+        return 0;
+    }
