@@ -1,0 +1,47 @@
+https://www.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
+
+//O(N^2) Time - Not optimized solution 
+
+class Solution {
+  public:
+  
+    bool check(vector<Node*> visited, Node *curr){
+        for(int i=0;i<visited.size();i++){
+            if(visited[i]==curr) return 1;
+        }
+        return 0;
+    }
+  
+    // Function to check if the linked list has a loop.
+    bool detectLoop(Node* head) {
+        // your code here
+        Node* curr = head;
+        vector<Node*> visited;
+        // unordered_map<Node*, bool> visited;
+        
+        while(curr){
+            if(check(visited,curr)) return 1;
+            
+            visited.push_back(curr);
+            curr = curr->next;
+        }
+        return 0;
+    }
+};
+
+
+//Approach 2: Using unordered map
+
+bool detectLoop(Node* head) {
+      // your code here
+      Node* curr = head;
+      unordered_map<Node*, bool> visited;
+        
+      while(curr){
+          if(visited[curr]) return 1;
+            
+          visited[curr] = 1;
+          curr = curr->next;
+      }
+      return 0;
+}
