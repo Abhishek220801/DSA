@@ -1,0 +1,20 @@
+https://www.geeksforgeeks.org/problems/find-length-of-loop/1
+
+int countNodesinLoop(Node *head) {
+        // Code here
+        Node* slow = head, *fast = head;
+        while(fast->next && fast->next->next){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow==fast) break;
+        }
+        if(fast->next==NULL || fast->next->next==NULL) return 0;
+        
+        slow = fast->next;
+        int count = 1;
+        while(slow!=fast){
+            slow = slow->next;
+            count++;
+        }
+        return count;
+    }
