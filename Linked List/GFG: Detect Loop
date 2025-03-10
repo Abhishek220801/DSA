@@ -30,7 +30,7 @@ class Solution {
 };
 
 
-//Approach 2: Using unordered map
+//Approach 2: Using unordered map - O(N) TC
 
 bool detectLoop(Node* head) {
       // your code here
@@ -47,7 +47,7 @@ bool detectLoop(Node* head) {
 }
 
 
-//Approach 3: Using Floyd Tortoise and Hare Algo
+//Approach 3: Using Floyd Tortoise and Hare Algo - better than last approach - O(1)
 
 bool detectLoop(Node* head) {
         // your code here
