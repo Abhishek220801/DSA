@@ -22,3 +22,38 @@ void removeLoop(Node* head) {
         }
         slow->next = NULL;
     }
+
+
+//Approach 2: Removing loop by counting nodes in Loop
+
+void removeLoop(Node* head) {
+        // code here
+        Node* slow = head, *fast = head;
+        while(fast && fast->next){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow==fast) break;
+        }
+        if(!fast || !fast->next){
+            return;
+        }
+        slow = fast->next;
+        int count = 1;
+        while(slow!=fast){
+            slow = slow->next;
+            count++;
+        }
+        slow = head, fast = head;
+        while(count--){
+            fast = fast->next;
+        }
+        while(slow!=fast){
+            slow = slow->next;
+            fast = fast->next;
+        }
+        
+        while(slow->next!=fast){
+            slow = slow->next;
+        }
+        slow->next = NULL;
+    }
