@@ -1,3 +1,6 @@
+LC: https://leetcode.com/problems/intersection-of-two-linked-lists/
+GFG: Intersection in Y shaped Lists: https://www.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
+
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode* a = headA;
         ListNode* b = headB;
