@@ -1,5 +1,10 @@
 https://leetcode.com/problems/add-two-numbers/
 
+APPROACH:
+ - Reverse LL (done since addition from RtL)
+ - Add nodes data
+ - Reverse back 
+
 Node* solve(Node* &head1, Node* &head2){
     if(head1==NULL) return head1;
     if(head2==NULL) return head2;
