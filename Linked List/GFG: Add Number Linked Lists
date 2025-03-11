@@ -1,0 +1,46 @@
+https://www.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
+
+class Solution {
+  public:
+    Node* reverse(Node *curr, Node *prev){
+        if(curr==NULL) return prev;
+        Node* front = curr->next;
+        curr->next = prev;
+        return reverse(front,curr);
+    }
+    Node* addTwoLists(Node* num1, Node* num2) {
+        // code here
+        num1 = reverse(num1,NULL);
+        num2 = reverse(num2,NULL);
+        
+        Node* curr1 = num1, *curr2 = num2;
+        Node* head = new Node(-1);
+        Node* tail = head;
+        
+        int sum, carry = 0;
+        while(curr1 || curr2 || carry){
+          sum = carry;
+          if(curr1){
+              sum+=curr1->data;
+              curr1 = curr1->next;
+          }
+          if(curr2){
+              sum+=curr2->data;
+              curr2 = curr2->next;
+          }
+          tail->next = new Node(sum%10);
+          tail = tail->next;
+          carry = sum/10;
+        };
+        
+        Node* result = reverse(head->next, NULL);
+
+        //handling leading zero case 
+        if(result && result->data==0){
+            if(!result->next) return result;
+            result = result->next;
+        }
+        
+        return result;
+    }
+};
