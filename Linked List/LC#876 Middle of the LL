@@ -1,0 +1,24 @@
+https://leetcode.com/problems/middle-of-the-linked-list/
+
+class Solution {
+public:
+    int getLength(ListNode* head){
+        ListNode* temp = head;
+        int len = 0;
+        while(temp){
+            temp = temp->next;
+            len++;
+        }
+        return len;
+    }
+    ListNode* middleNode(ListNode* head) {
+        if(!head->next) return head;
+        int len = getLength(head), i=1;
+        ListNode* temp = head;
+        while(i<len/2){
+            temp = temp->next;
+            i++;
+        }
+        return temp->next;
+    }
+};
