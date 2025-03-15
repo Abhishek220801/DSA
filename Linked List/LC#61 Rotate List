@@ -24,3 +24,27 @@ ListNode* rotateRight(ListNode* head, int k) {
         tail->next = head;
         return curr;
     }
+
+
+//Solution 2:
+
+ListNode* rotateRight(ListNode* head, int k) {
+        if(!head || !head->next) return head;
+        ListNode* temp = head, *tail;
+        int len = 0;
+        while(temp){
+            if(!temp->next) tail = temp;
+            temp = temp->next;
+            len++;
+        }
+        k = k%len;
+        if(k==0) return head;
+        temp = head;
+        for(int i=1;i<len-k;i++){
+            temp = temp->next;
+        }
+        tail->next = head;
+        head = temp->next;
+        temp->next = NULL;
+        return head;
+    }
