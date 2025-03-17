@@ -38,3 +38,43 @@ public:
         return arr[0];
     }
 };
+
+
+//Better APPROACH in terms of Time Complexity 
+
+class Solution {
+public:
+    ListNode* merge(ListNode* list1, ListNode* list2) {
+        if(!list1) return list2;
+        if(!list2) return list1;
+        ListNode* ans = new ListNode(-1), *mptr = ans;
+
+        while(list1 && list2){
+            if(list1->val<=list2->val){
+                mptr->next = list1;
+                list1 = list1->next;
+            }
+            else if(list1->val>=list2->val){
+                mptr->next = list2;
+                list2 = list2->next;
+            }
+            mptr = mptr->next;
+        }
+        if(list1) mptr->next = list1;
+        if(list2) mptr->next = list2;
+
+        return ans->next;
+    }
+    ListNode* mergeKLists(vector<ListNode*>& arr) {
+        if(arr.size()==0) return NULL;
+        while(arr.size()>1){
+            ListNode* a = arr[0];
+            arr.erase(arr.begin());
+            ListNode* b = arr[0];
+            arr.erase(arr.begin());
+            ListNode* c = merge(a,b);
+            arr.push_back(c);
+        }
+        return arr[0];
+    }
+};
