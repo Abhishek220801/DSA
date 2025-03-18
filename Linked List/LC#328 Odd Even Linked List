@@ -1,0 +1,20 @@
+https://leetcode.com/problems/odd-even-linked-list/
+
+Node* divide(Node* head) {
+  // code here
+  if(!head->next) return head;
+  Node* even = new Node(-1), *odd = new Node(-1), *et = even, *ot = odd, *t = head;
+  while(t){
+      if(t->data%2==0){
+          et->next = t;
+          et = et->next;
+      } else{
+          ot->next = t;
+          ot=ot->next;
+      }
+      t = t->next;
+  }
+  et->next = odd->next;
+  ot->next = NULL;
+  return even->next;
+}
