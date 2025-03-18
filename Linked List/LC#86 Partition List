@@ -1,0 +1,17 @@
+ListNode* partition(ListNode* head, int x) {
+    if(!head || !head->next) return head;
+    ListNode* lo = new ListNode(-1), *hi = new ListNode(-1), *tl = lo, *th = hi, *t = head;
+    while(t){
+        if(t->val<x){
+            tl->next = t;
+            tl = tl->next;
+        } else{
+            th->next = t;
+            th = th->next;
+        }
+        t = t->next;
+    }
+    tl->next = hi->next;
+    th->next = NULL;
+    return lo->next;
+}
