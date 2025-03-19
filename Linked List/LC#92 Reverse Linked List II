@@ -1,0 +1,32 @@
+https://leetcode.com/problems/reverse-linked-list-ii/
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(!head || !head->next) return head;
+        ListNode* newHead = reverseList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return newHead;
+    }
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if(left==right) return head;
+        ListNode* temp = head, *a = NULL, *b=NULL, *c=NULL, *d=NULL;
+        int count = 1;
+        while(temp){
+            if(count==left-1) a = temp;
+            else if(count==left) b = temp;
+            else if(count==right) c = temp;
+            else if(count==right+1) d = temp;
+            temp = temp->next;
+            count++;
+        }
+        if(a) a->next = NULL;
+        c->next = NULL;
+        c = reverseList(b);
+        if(a) a->next = c;
+        b->next = d;
+        if(a) return head;
+        return c;
+    }
+};
