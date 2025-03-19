@@ -1,0 +1,35 @@
+https://leetcode.com/problems/reorder-list/
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(!head || !head->next) return head;
+        ListNode* newHead = reverseList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return newHead;
+    }
+    void reorderList(ListNode* head) {
+        ListNode* slow = head, *fast = head;
+        while(fast->next && fast->next->next){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* b = reverseList(slow->next), *a = head;
+        slow->next = NULL; //for breaking the list 
+        //merge these two lists alternative nodes 
+        ListNode* c = new ListNode(-1);
+        ListNode* tempC = c, *tempA = a, *tempB = b;
+        while(tempA && tempB){
+            tempC->next = tempA;
+            tempA = tempA->next;
+            tempC = tempC->next;
+
+            tempC->next = tempB;
+            tempB = tempB->next;
+            tempC = tempC->next;
+        }
+        tempC->next=tempA;
+        head = c->next;
+    }
+};
