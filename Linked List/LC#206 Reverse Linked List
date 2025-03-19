@@ -1,3 +1,6 @@
+https://leetcode.com/problems/reverse-linked-list/
+
+
 //Recursive Approach 
 
 Node* reverse(Node* &prev, Node* &curr){
@@ -25,4 +28,14 @@ Node* reverseUsingLoop(Node* &head){
         curr = temp;
     }
     return prev;
+}
+
+//Recursive Method - 2
+
+ListNode* reverseList(ListNode* head) {
+    if(!head || !head->next) return head;
+    ListNode* newHead = reverseList(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return newHead;
 }
