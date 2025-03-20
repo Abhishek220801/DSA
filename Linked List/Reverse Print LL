@@ -1,0 +1,6 @@
+void reversePrint(Node* head){
+    Node* temp = head;
+    if(!temp) return;
+    reversePrint(temp->next);
+    cout<<temp->data<<" ";
+}
