@@ -6,3 +6,10 @@ void reversePrint(Node* head){
     reversePrint(temp->next);
     cout<<temp->data<<" ";
 }
+
+//For Doubly LL - using prev pointer
+void printRev(Node* tail){
+    if(!tail) return;
+    cout<<tail->data<<" ";
+    printRev(tail->prev);
+}
