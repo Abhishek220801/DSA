@@ -7,9 +7,19 @@ void reversePrint(Node* head){
     cout<<temp->data<<" ";
 }
 
-//For Doubly LL - using prev pointer
+//For Doubly LL - using prev pointer - O(1) space 
 void printRev(Node* tail){
     if(!tail) return;
     cout<<tail->data<<" ";
     printRev(tail->prev);
+}
+
+//Iterative - DLL - O(1) space
+void printRev(Node* tail){
+    if(!tail) return;
+    while(tail){
+        cout<<tail->data<<" ";
+        tail = tail->prev;
+    }
+    cout<<endl;
 }
