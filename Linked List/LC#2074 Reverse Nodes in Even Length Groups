@@ -1,0 +1,52 @@
+https://leetcode.com/problems/reverse-nodes-in-even-length-groups/
+
+class Solution {
+public:
+    ListNode* reverseEvenLengthGroups(ListNode* head) {
+        if(!head || !head->next) return head;
+        ListNode* prev = nullptr, *curr = head;
+        int groupSize = 1;
+        while(curr){
+            ListNode* groupStart = curr;
+            int count = 0;
+            while(curr && count<groupSize){
+                prev = curr;
+                curr = curr->next;
+                count++;
+            }
+            if(count%2==0){
+                prev->next = NULL;
+                ListNode* reversedGroup = reverse(groupStart);
+                ListNode* temp = reversedGroup;
+                while(temp->next){
+                    temp = temp->next;
+                }
+                temp->next = curr;
+
+                if(groupStart!=head){
+                    ListNode* prevGroupEnd = head;
+                    while(prevGroupEnd->next!=groupStart){
+                        prevGroupEnd = prevGroupEnd -> next;
+                    }
+                    prevGroupEnd -> next = reversedGroup;
+                } else {
+                    head = reversedGroup;
+                }
+            }
+            groupSize++;
+        }
+        return head;
+    };
+
+    ListNode* reverse(ListNode* head){
+        if(!head || !head->next) return head;
+        ListNode* prev = NULL, *curr = head, *forward;
+        while(curr){
+            forward = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = forward;       
+        }
+        return prev;
+    }
+};
