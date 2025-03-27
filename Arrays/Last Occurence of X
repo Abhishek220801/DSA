@@ -1,0 +1,8 @@
+int lastOccurence(vector<int> &a, int x){
+    for(int i=a.size()-1;i>0;i--){
+        if(a[i]==x){
+            return i;
+        }
+    }
+    return -1;
+}
