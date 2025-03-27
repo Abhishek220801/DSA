@@ -1,0 +1,28 @@
+https://leetcode.com/problems/rotate-array/description/
+
+class Solution {
+public:
+    void reverse(vector<int> &v){
+        int x = 0, y = v.size()-1;
+        while(x<y){
+            swap(v[x],v[y]);
+            x++;
+            y--;
+        }
+    }
+
+    void reversePart(vector<int> &v, int s, int e){
+        while(s<e){
+            swap(v[s],v[e]);
+            s++;
+            e--;
+        }
+    }
+
+    void rotate(vector<int>& v, int k) {
+        if(k>v.size()) k = k%v.size();
+        reversePart(v,0,v.size()-k-1);
+        reversePart(v,v.size()-k,v.size()-1);
+        reverse(v);
+    }
+};
