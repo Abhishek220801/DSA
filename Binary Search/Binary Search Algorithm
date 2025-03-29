@@ -4,7 +4,7 @@ int binSearch(int arr[], int x, int s, int e){
         if(arr[mid]==x){
             return mid;
         }
-        else if(arr[mid]<x){
+        else if(x<arr[mid]){
             binSearch(arr,x,s,mid-1);
         } else{
             binSearch(arr,x,mid+1,e);
