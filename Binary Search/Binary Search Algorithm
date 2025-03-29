@@ -1,6 +1,6 @@
 int binSearch(int arr[], int x, int s, int e){
     while(s<e){
-        int mid =  s+(e-s)/2;
+        int mid =  s+(e-s)/2;  //to avoid Integer Overflow
         if(arr[mid]==x){
             return mid;
         }
