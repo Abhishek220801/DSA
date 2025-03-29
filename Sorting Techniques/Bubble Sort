@@ -37,10 +37,15 @@ void bubbleSort(int arr[], int n){
 
 void bubbleSort(vector<int>& arr, int n){
     for(int i=n-2;i>=0;i--){
+        bool isSwapped = 0;
         for(int j=0;j<=i;j++){
             if(arr[j]>arr[j+1]){
                 swap(arr[j],arr[j+1]);
+                isSwapped = 1;
             }
+        }
+        if(isSwapped == 0){
+            break;
         }
     }
 }
