@@ -1,0 +1,15 @@
+int binSearch(int arr[], int x, int s, int e){
+    while(s<e){
+        int mid =  s+(e-s)/2;
+        if(arr[mid]==x){
+            return mid;
+        }
+        else if(arr[mid]<x){
+            binSearch(arr,x,s,mid-1);
+        } else{
+            binSearch(arr,x,mid+1,e);
+        }
+    }
+    return -1;
+}
+
