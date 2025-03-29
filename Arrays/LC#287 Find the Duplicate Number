@@ -1,3 +1,5 @@
+https://leetcode.com/problems/find-the-duplicate-number/
+
 //using sort STL method (not allowed in this problem)
 //TC - O(N*log(N)) , SC - O(N)
 
