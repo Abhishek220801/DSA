@@ -1,0 +1,38 @@
+//Lower Bound -> smallest index such that arr[ind]>=target
+https://www.naukri.com/code360/problems/lower-bound_8165382
+
+int lowerBound(vector<int>& nums, int x){
+    int n = nums.size();
+    int lb = n, s = 0, e = n-1;
+    while(s<=e){
+        int mid = (s+e)/2;
+        if(nums[mid]>=x){
+            lb = mid;
+            e = mid-1;
+        }
+        else s = mid+1;
+    }
+    return lb;
+}
+
+or *lower_bound(nums.begin(),nums.end(),x)  //STL built-in function 
+
+
+//Upper Bound -> smallest index such that arr[mid]>target
+https://www.naukri.com/code360/problems/implement-upper-bound_8165383
+
+int upperBound(vector<int> &arr, int x, int n){
+	// Write your code here.
+	int ans = n, s = 0, e = n-1, mid;
+	while(s<=e){
+		mid = s + (e-s)/2;
+		if(arr[mid]>x){
+			ans = mid;
+			e = mid-1;
+		}
+		else s = mid+1;
+	}
+	return ans;
+}
+
+TC => O(log(N))
