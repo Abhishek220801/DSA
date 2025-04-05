@@ -13,6 +13,7 @@ public:
                 e = mid-1;
             }
         }
+        if(fo==-1) return {-1,-1};  //optimization - last occ cannot exist without a first occ
         s = 0, e = nums.size()-1;
         while(s<=e){
             int mid = s+(e-s)/2;
