@@ -1,0 +1,3 @@
+int len = str.length(); // length of string
+reverse(str.begin(), str.begin()+len/2);
+cout << str << endl; // Output: kehsiBhA
