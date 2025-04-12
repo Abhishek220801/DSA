@@ -1,3 +1,5 @@
+//Brute force
+
 int max = 0;
   for(int i=0; i<s.length(); i++){
       char ch = s[i];
@@ -17,3 +19,23 @@ int max = 0;
           cout<<s[i]<<" "<<max<<endl;
       };
   }
+
+
+//Optimization - extra space but constant space, no extra time
+
+vector<int> arr(26,0); // 26 letters in english alphabet
+    for(int i=0; i<s.length();i++){
+        char ch = s[i];
+        int ascii = int(ch);
+        arr[ascii-'a']++;
+    }
+    int max = 0;
+    for(int i=0; i<26; i++){
+        if(arr[i]>max) max = arr[i];
+    }
+    for(int i=0; i<26; i++){
+        if(arr[i]==max){
+            char ch = char(i+97);
+            cout<<ch<<" "<<max<<endl;
+        }
+    }
