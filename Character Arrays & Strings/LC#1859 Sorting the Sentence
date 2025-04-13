@@ -1,0 +1,40 @@
+https://leetcode.com/problems/sorting-the-sentence
+
+class Solution {
+public:
+    string sortSentence(string s) {
+        vector<string> ans(10);
+        string temp;
+        int count = 0, idx = 0;
+        while(idx<s.size()){
+            //pushing word once space is encountered (after word)
+            if(s[idx]==' '){
+                int pos = temp[temp.size()-1]-'0';
+                temp.pop_back();
+                ans[pos] = temp;
+                temp.clear();
+                count++;
+                idx++;
+            } else {         //continue updating word
+                temp+=s[idx];
+                idx++;
+            }
+        }
+        //handling the last word case where no space after word present
+        if(!temp.empty()){
+            int pos = temp[temp.size()-1]-'0';
+            temp.pop_back();
+            ans[pos] = temp;
+            count++;
+        }
+        temp.clear();
+        //add words to temp
+        for(int i=1;i<=count;i++){
+            temp+=ans[i];
+            temp+=' ';
+        }
+        //remove the last space
+        temp.pop_back();
+        return temp;
+    }
+};
