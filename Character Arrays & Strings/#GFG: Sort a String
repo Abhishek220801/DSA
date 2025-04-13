@@ -1,0 +1,6 @@
+https://www.geeksforgeeks.org/problems/sort-a-string2943/1
+
+string sort(string s){
+    sort(s.begin(),s.end());
+    return s;
+}
