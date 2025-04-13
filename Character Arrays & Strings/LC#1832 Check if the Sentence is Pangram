@@ -1,0 +1,19 @@
+https://leetcode.com/problems/check-if-the-sentence-is-pangram/
+
+class Solution {
+public:
+    bool checkIfPangram(string sentence) {
+        if(sentence.size()<26) return false;
+        vector<bool> alphabets(26,0);
+        int idx = 0;
+        while(idx<sentence.size()){
+            int pos = sentence[idx]-97;
+            alphabets[pos] = 1;
+            idx++;
+        }
+        for(int i=0;i<26;i++){
+            if(alphabets[i]==0) return false;
+        }
+        return true;
+    }
+};
