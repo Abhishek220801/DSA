@@ -1,0 +1,21 @@
+https://www.geeksforgeeks.org/problems/check-if-string-is-rotated-by-two-places-1587115620/1
+
+class Solution {
+  public:
+    // Function to check if a string can be obtained by rotating
+    // another string by exactly 2 places.
+    bool isRotated(string& s1, string& s2) {
+        // Your code here
+        int n = s1.size();
+        if(n==1 && s1!=s2){
+            return false;
+        } else if(n==1 && s1==s2) return true;
+        if(n==2 && s1==s2){
+            return true;
+        } else if(n==2 && s1!=s2) return false;
+        if(n!=s2.length()) return false;
+        string clockwise = s1.substr(n-2,2)+s1.substr(0,n-2);
+        string anticlockwise = s1.substr(2)+s1.substr(0,2);
+        return (s2==clockwise || s2==anticlockwise);
+    }
+};
