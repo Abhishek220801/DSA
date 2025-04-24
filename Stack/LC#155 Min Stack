@@ -1,6 +1,6 @@
 https://leetcode.com/problems/min-stack/
 
-#M1 -> using a vector of pair of value and minimum till now value in stack (since constant time op is needed)
+# M1 -> using a vector of pair of value and minimum till now value in stack (since constant time op is needed)
 
 class MinStack {
 public:
@@ -27,5 +27,58 @@ public:
     
     int getMin() {
         return s.top().second;
+    }
+};
+
+
+# M2 -> slightly better space complexity using a clever trick 
+
+class MinStack {
+public:
+    stack<long long> s;
+    long long minVal;
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        if(s.empty()) {
+            s.push(val);
+            minVal = val;
+        } else{
+            if(val>=minVal){
+                s.push(val);
+            } else{
+                s.push(2LL * val - minVal);
+                minVal = val;
+            }
+        }
+    }
+    
+    void pop() {
+        if(s.empty()) return;
+
+        long long top = s.top();
+        s.pop();
+
+        if(top<minVal){
+            minVal = 2LL * minVal - top;
+        }
+    }
+    
+    int top() {
+        if(s.empty()) return -1;
+
+        long long top = s.top();
+
+        if(top<minVal){
+            return (int)minVal;
+        } else{
+            return (int)top;
+        }
+    }
+    
+    int getMin() {
+        return (int)minVal;
     }
 };
