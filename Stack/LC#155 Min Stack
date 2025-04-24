@@ -1,0 +1,31 @@
+https://leetcode.com/problems/min-stack/
+
+#M1 -> using a vector of pair of value and minimum till now value in stack (since constant time op is needed)
+
+class MinStack {
+public:
+    stack<pair<int,int>> s;
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        if(s.empty()) s.push({val,val});
+        else{
+            int minVal = min(val,s.top().second);
+            s.push({val,minVal});
+        }
+    }
+    
+    void pop() {
+        s.pop();
+    }
+    
+    int top() {
+        return s.top().first;
+    }
+    
+    int getMin() {
+        return s.top().second;
+    }
+};
