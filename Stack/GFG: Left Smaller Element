@@ -1,5 +1,7 @@
 https://www.geeksforgeeks.org/problems/smallest-number-on-left3403/0
 
+(or Previous Smaller Element) -> O(N) ST Complexity  
+
 class Solution {
   public:
     vector<int> leftSmaller(vector<int> arr) {
