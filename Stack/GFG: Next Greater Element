@@ -20,7 +20,7 @@ class Solution {
     }
 };
 
-//Optimized - using Stack (pop, ans/mark, push)
+//Optimized - using Stack (pop, ans/mark, push) & reverse traversal 
 
 stack<int> st;
     
