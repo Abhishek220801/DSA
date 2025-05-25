@@ -1,0 +1,17 @@
+string compressString(string s){
+    int n = s.length();
+    if(n==1) return s;
+    stack<char> st;
+    st.push(s[0]);
+    for(int i=1; i<n; i++){
+        if(s[i]!=st.top()) st.push(s[i]);
+        else continue;
+    }
+    string res = "";
+    while(!st.empty()){
+        res+=st.top();
+        st.pop();
+    }
+    reverse(res.begin(),res.end());
+    return res;
+}
