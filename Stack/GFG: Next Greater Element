@@ -1,4 +1,5 @@
-//Brute-force 
+//Brute-force
+// O(N^2) T, O(N) S
 
 class Solution {
   public:
@@ -21,6 +22,7 @@ class Solution {
 };
 
 //Optimized - using Stack (pop, ans/mark, push) & reverse traversal 
+//O(N) ST
 
 stack<int> st;
     
