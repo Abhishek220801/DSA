@@ -1,0 +1,18 @@
+    //Previous Greater Element Index Array
+    vector<int> pgi(n);
+    stack<int> st;
+    pgi[0] = -1;
+    st.push(0);
+    
+    for(int i=1; i<n; i++){
+        while(!st.empty() && arr[st.top()]<=arr[i]) st.pop();
+        if(st.empty()) pgi[i] = -1;
+        else pgi[i] = st.top();
+        st.push(i);
+    }
+    
+    vector<int> span(n);
+    
+    for(int i=0; i<n; i++){
+        span[i] = i - pgi[i];
+    }
