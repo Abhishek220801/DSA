@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+string solve(string val1, string val2, char ch){
+    string s= "";
+    s+=val1;
+    s.push_back(ch);
+    s+=val2;
+    return s;
+}
+
+int main(){
+
+    string s = "-/*+79483";
+
+    stack<string> val;
+
+    for(int i=s.length()-1; i>=0; i--){
+        if(s[i]>='0' && s[i]<='9') val.push(to_string(s[i]-'0'));
+        else{
+            string v1 = val.top();
+            val.pop();
+            string v2 = val.top();
+            val.pop();
+            string ans = solve(v1, v2, s[i]);
+            val.push(ans);
+        }
+    }
+
+    cout<<val.top()<<endl;
+
+    return 0;
+}
