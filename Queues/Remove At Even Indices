@@ -1,4 +1,4 @@
-//zero-based indexing considered (if not - consider 1-based in case of stacks/queues)
+f//zero-based indexing considered (if not - consider 1-based in case of stacks/queues)
 
 void removeAtEven(queue<int> &q){
     int n = q.size();
@@ -9,5 +9,18 @@ void removeAtEven(queue<int> &q){
             q.pop();
             q.push(x);
         }
+    }
+}
+
+//or
+
+void removeAtEven(queue<int> &q){
+    int n = q.size();
+    for(int i=0; i<n; i++){
+        if(i%2!=0) {
+            int x = q.front();
+            q.push(x);
+        }
+        q.pop();
     }
 }
