@@ -1,0 +1,11 @@
+//O(N) time, O(1) space
+
+void display(queue<int> &q){
+    for(int i=1; i<=q.size(); i++){
+        cout<<q.front()<<" ";
+        int x = q.front();
+        q.pop();
+        q.push(x);
+    }
+    cout<<endl;
+}
