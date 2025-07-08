@@ -1,0 +1,9 @@
+Node* removeAtHead(Node* head){
+    if(!head){
+        return nullptr;
+    } 
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+    return head;
+}
