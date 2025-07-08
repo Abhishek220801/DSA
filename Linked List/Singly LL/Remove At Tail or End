@@ -1,0 +1,12 @@
+
+Node* removeAtTail(Node* head){
+    if(!head) return NULL;
+    Node* temp = head;
+    while(temp->next->next){
+        temp = temp->next;
+    }
+    Node* tail = temp->next;
+    temp->next = tail->next;
+    delete tail;
+    return head;
+}
