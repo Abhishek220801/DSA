@@ -1,0 +1,110 @@
+
+class Node{
+    public:
+    int data;
+    Node* next, *prev;
+
+    Node(){
+        this->data = 0;
+        this->next = NULL;
+        this->prev = NULL;
+    }
+    Node(int data){
+        this->data = data;
+        this->next = NULL;
+        this->prev = NULL;
+    }
+};
+
+class Deque{
+    public:
+    Node* head;
+    Node* tail;
+    int s;
+
+    Deque(){
+        head = tail = NULL;
+        s = 0;
+    }
+
+    void pushBack(int val){
+        Node* newTail = new Node(val);
+        if(s==0) head = tail = newTail;
+        else {
+            tail->next = newTail;
+            newTail->prev = tail;
+            tail = newTail;
+        };
+        s++;
+    }
+
+    void pushFront(int val){
+        Node* temp = new Node(val);
+        if(s==0) head = tail = temp;
+        else{
+            head->prev = temp;
+            temp->next = head;
+            head = temp;
+        }
+        s++;
+    }
+
+    void popFront(){
+        if(s==0){
+            cout<<"List is Empty";
+            return;
+        };
+        head = head -> next;
+        if(head) head->prev = NULL;
+        if(!head) tail = NULL;
+        s--;
+    }
+
+    void popBack(){
+        if(s==0){
+            cout<<"Deque is empty"<<endl;
+            return;
+        }
+        else if(s==1){
+            popFront();
+            return;
+        };
+        Node* temp = tail->prev;
+        temp->next = NULL;
+        tail = temp;
+        s--;
+    }
+
+    int size(){
+        return s;
+    }
+
+    bool empty(){
+        if(s==0) return true;
+        else return false;
+    }
+
+    int front(){
+        if(s==0){
+            cout<<"Queue is empty"<<endl;
+            return -1;
+        }
+        return head->data;
+    }
+
+    int back(){
+        if(s==0){
+            cout<<"Deque is empty"<<endl;
+            return -1;
+        }
+        return tail->data;
+    }
+    void display(){
+        Node* temp = head;
+        while(temp!=NULL){
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        }
+        cout<<endl;
+    }
+}; 
