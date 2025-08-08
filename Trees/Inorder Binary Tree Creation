@@ -1,0 +1,35 @@
+#include<iostream>
+#include<queue>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* left, *right;
+
+    Node(int val){
+        data = val;
+        left = right = NULL;
+    }
+};
+
+Node* BinaryTree(){
+    int x;
+    cin>>x;
+    if(x==-1) return NULL;
+    Node* temp = new Node(x);
+    cout<<"Enter the left child of "<<x<<": ";
+    temp->left = BinaryTree(); //left
+    cout<<"Enter the right child of "<<x<<": ";
+    temp->right = BinaryTree(); //right
+    return temp;   
+}
+
+int main(){
+
+    cout<<"Enter the root Node: ";
+    Node* root;
+    root = BinaryTree();
+
+    return 0;
+};
