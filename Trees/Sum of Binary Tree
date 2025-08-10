@@ -1,5 +1,7 @@
 https://www.geeksforgeeks.org/problems/sum-of-binary-tree/1
 
+# Method - 1
+
 class Solution {
   public:
     void total(Node* root, int& sum){
@@ -14,5 +16,16 @@ class Solution {
         int sum = 0;
         total(root, sum);
         return sum;
+    }
+};
+
+# Method - 2 
+
+class Solution {
+  public:
+    int sumBT(Node* root) {
+        // code here
+        if(!root) return 0;
+        return root->data+sumBT(root->left)+sumBT(root->right);
     }
 };
