@@ -1,0 +1,20 @@
+https://www.geeksforgeeks.org/problems/size-of-binary-tree/1
+
+class Solution {
+  public:
+  
+  void calcSize(Node* root, int& count){
+      if(!root) return;
+      count++;
+      calcSize(root->left, count);
+      calcSize(root->right, count);
+  }
+  
+    int getSize(Node* node) {
+        // code here
+        if(!node->left && !node->right) return 1;
+        int count = 0;
+        calcSize(node, count);
+        return count;
+    }
+};
