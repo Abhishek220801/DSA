@@ -1,5 +1,7 @@
 https://www.geeksforgeeks.org/problems/size-of-binary-tree/1
 
+#Method 1 
+
 class Solution {
   public:
   
@@ -16,5 +18,17 @@ class Solution {
         int count = 0;
         calcSize(node, count);
         return count;
+    }
+};
+
+# Method 2
+
+class Solution {
+  public:
+
+    int getSize(Node* node) {
+        // code here
+        if(!node) return 0;
+        return (1+getSize(node->left)+getSize(node->right));
     }
 };
