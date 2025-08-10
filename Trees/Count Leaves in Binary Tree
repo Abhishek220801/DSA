@@ -1,0 +1,19 @@
+https://www.geeksforgeeks.org/problems/count-leaves-in-binary-tree/1
+
+class Solution {
+  public:
+    void total(Node* root, int& count){
+        if(!root) return;
+        if(!root->left && !root->right) count++;
+        total(root->left, count);
+        total(root->right, count);
+    }
+  
+    // Function to count the number of leaf nodes in a binary tree.
+    int countLeaves(Node* root) {
+        // write code here
+        int count = 0;
+        total(root,count);
+        return count;
+    }
+};
