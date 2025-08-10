@@ -1,0 +1,18 @@
+https://www.geeksforgeeks.org/problems/sum-of-binary-tree/1
+
+class Solution {
+  public:
+    void total(Node* root, int& sum){
+        if(!root) return;
+        sum+=root->data;
+        total(root->left, sum);
+        total(root->right, sum);
+    }
+  
+    int sumBT(Node* root) {
+        // code here
+        int sum = 0;
+        total(root, sum);
+        return sum;
+    }
+};
