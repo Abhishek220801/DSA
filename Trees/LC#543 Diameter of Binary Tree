@@ -1,6 +1,6 @@
 https://leetcode.com/problems/diameter-of-binary-tree
 
-# M1: Not Optimized 
+# M1: Not Optimized -> O(n^2) TC
 
 class Solution {
 public:
