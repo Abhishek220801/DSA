@@ -1,0 +1,25 @@
+https://www.geeksforgeeks.org/problems/check-for-balanced-tree/1
+
+class Solution {
+  public:
+    int height(Node* root){
+        if(!root) return 0;
+        return 1+max(height(root->left),height(root->right));
+    }
+  
+    bool isBalanced(Node* root) {
+        // Code here
+        if(!root) return true;
+        int Lh = height(root->left);
+        int Rh = height(root->right);
+        
+        if(abs(Lh-Rh)>1) return false;
+        
+        bool left = isBalanced(root->left);
+        bool right = isBalanced(root->right);
+        
+        if(!left || !right) return false;
+        
+        return true;
+    }
+};
