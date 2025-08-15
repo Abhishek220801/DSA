@@ -1,0 +1,24 @@
+https://leetcode.com/problems/path-sum-ii/
+
+class Solution {
+public:
+    void helper(TreeNode* root, int sum, vector<int> &curr,vector<vector<int>> &res){
+        if(!root) return;
+
+        curr.push_back(root->val);
+        if(root->val==sum && (!root->left && !root->right))
+            res.push_back(curr);
+        helper(root->left,sum-root->val,curr,res);
+        helper(root->right,sum-root->val,curr,res);
+
+        curr.pop_back();
+    }
+
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<vector<int>> res;
+        vector<int> curr;
+        if(!root) return res;
+        helper(root, targetSum, curr, res);
+        return res;
+    }
+};
