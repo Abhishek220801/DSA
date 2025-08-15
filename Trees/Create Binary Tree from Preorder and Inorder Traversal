@@ -1,0 +1,26 @@
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+
+class Solution {
+    private:
+    TreeNode* helper(vector<int>& preorder, int pre_st, int pre_end, vector<int>& inorder, int in_st, int in_end, unordered_map<int,int>& m){
+        if(pre_st>pre_end || in_st>in_end) return NULL;
+        TreeNode* root = new TreeNode(preorder[pre_st]);
+
+        int root_in_idx = m[root->val];
+        int num_in_left = root_in_idx - in_st;
+
+        root->left = helper(preorder, pre_st+1, pre_st+num_in_left, inorder, in_st, in_st+num_in_left-1, m);
+        root->right = helper(preorder, pre_st+num_in_left+1, pre_end, inorder, in_st+num_in_left+1, in_end, m);
+
+        return root;
+    }
+public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        unordered_map<int,int> m;
+        int n = inorder.size();
+        for(int i=0; i<n; i++){
+            m.insert({inorder[i],i});
+        }
+        return helper(preorder, 0, n-1, inorder, 0, n-1, m);
+    }
+};
