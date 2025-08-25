@@ -1,0 +1,19 @@
+https://www.geeksforgeeks.org/problems/preorder-traversal/1
+
+class Solution {
+  public:
+    void pre(Node* root, vector<int>& ans){
+        if(!root) return;
+        ans.push_back(root->data);
+        pre(root->left,ans);
+        pre(root->right,ans);
+    }
+    vector<int> preorder(Node* root) {
+        // code here
+        vector<int> ans;
+        if(!root) return ans;
+        pre(root,ans);
+        return ans;
+    }
+};
+
