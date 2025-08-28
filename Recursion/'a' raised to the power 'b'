@@ -1,3 +1,13 @@
+// Iterative 
+int powr(int a, int b){
+    int ans=1;
+    for(int i=b; i>0; i--){
+        ans*=a;
+    }
+    return ans;
+}
+
+// Recursive
 int power(int a, int b){
     if(b==0) return 1;
     return a*power(a,b-1);
