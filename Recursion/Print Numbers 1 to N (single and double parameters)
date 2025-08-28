@@ -1,0 +1,17 @@
+// single param
+
+void print1toN(int n){
+    if(n==0) return;
+    cout<<n<<" ";
+    print1toN(n-1);
+}
+
+// double params
+
+void p1toN(int i, int n){
+    if(i>n) return;
+    cout<<i<<" ";
+    p1toN(i+1,n);
+}
+
+//just change the order or recc reln and the print stmt if to print N to 1 instead of 1 to N
