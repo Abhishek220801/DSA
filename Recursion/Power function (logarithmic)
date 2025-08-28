@@ -1,0 +1,13 @@
+// Normal -> TC O(n)
+int pow(int x, int n){
+    if(n==0) return 1;
+    if(n==1) return x;
+    return x*pow(x, n-1);
+}
+
+// Logarithmic -> TC O(log(n))
+int pow(int x, int n){
+    if(n==0) return 1;
+    if(n==1) return x;
+    return pow(x,n/2)*pow(x,n/2);
+}
