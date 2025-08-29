@@ -6,3 +6,14 @@ int maze(int sr, int sc, int er, int ec){
     int downWays = maze(sr+1,sc,er,ec);
     return rightWays + downWays;
 }
+
+//Print all possible paths 
+void printPath(int sr, int sc, int er, int ec, string s){
+    if(sr>er || sc>ec) return;
+    if(sr==er && sc==ec){
+        cout<<s<<endl;
+        return;
+    };
+    printPath(sr,sc+1,er,ec,s+'R');
+    printPath(sr+1,sc,er,ec,s+'D');
+}
