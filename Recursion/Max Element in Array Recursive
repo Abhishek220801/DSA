@@ -1,3 +1,4 @@
+// No return
 void mx(int arr[], int n, int idx, int maxi){
     if(idx==n){
         cout<<maxi;
@@ -5,4 +6,10 @@ void mx(int arr[], int n, int idx, int maxi){
     };
     if(maxi<arr[idx]) maxi=arr[idx];
     mx(arr,n,idx+1,maxi);
+}
+
+// Int return 
+int mx2(int arr[], int n, int idx){
+    if(idx==n) return INT_MIN;
+    return max(arr[idx], mx2(arr,n,idx+1));
 }
