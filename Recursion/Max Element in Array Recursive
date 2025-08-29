@@ -1,0 +1,8 @@
+void mx(int arr[], int n, int idx, int maxi){
+    if(idx==n){
+        cout<<maxi;
+        return;
+    };
+    if(maxi<arr[idx]) maxi=arr[idx];
+    mx(arr,n,idx+1,maxi);
+}
