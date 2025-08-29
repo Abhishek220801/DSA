@@ -19,6 +19,8 @@ int maze2(int row, int col){
 }
 
 //Print all possible paths 
+
+// 4 variables
 void printPath(int sr, int sc, int er, int ec, string s){
     if(sr>er || sc>ec) return;
     if(sr==er && sc==ec){
@@ -27,4 +29,15 @@ void printPath(int sr, int sc, int er, int ec, string s){
     };
     printPath(sr,sc+1,er,ec,s+'R');
     printPath(sr+1,sc,er,ec,s+'D');
+}
+
+// 2 variables
+void printPath(int row, int col, string s){
+    if(row<1 || col<1) return;
+    if(row==1 && col==1){
+        cout<<s<<endl;
+        return;
+    };
+    printPath(row,col-1,s+'R');
+    printPath(row-1,col,s+'D');
 }
