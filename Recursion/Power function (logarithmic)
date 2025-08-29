@@ -6,8 +6,8 @@ int pow(int x, int n){
 }
 
 // Logarithmic -> TC O(log(n))
-int pow(int x, int n){
-    if(n==0) return 1;
-    if(n==1) return x;
-    return pow(x,n/2)*pow(x,n/2);
+int pow(int a, int b){
+    if(b==1) return a; 
+    if(b%2==0) return pow(a,b/2)*pow(a,b/2);
+    else return pow(a,b/2)*pow(a,b/2+1);
 }
