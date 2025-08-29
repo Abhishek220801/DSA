@@ -1,0 +1,5 @@
+void print(int arr[], int n){
+    if(n<0) return;
+    print(arr,n-1);
+    cout<<arr[n]<<" ";
+}
