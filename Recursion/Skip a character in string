@@ -1,0 +1,8 @@
+void removeLetter(string s, char ch, int i, string& str){
+    if(i==s.length()){
+        cout<<str;
+        return;
+    }
+    if(s[i]!=ch) str+=s[i];
+    removeLetter(s,ch,i+1,str);
+}
