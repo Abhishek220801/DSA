@@ -25,3 +25,24 @@ public:
         return res;
     }
 };
+
+// or 
+
+class Solution {
+public:
+    void helper(vector<int>& nums, vector<int> curr, vector<vector<int>> &res, int i){
+        if(i==nums.size()){
+            res.push_back(curr);
+            return;
+        }
+        helper(nums,curr,res,i+1);
+        curr.push_back(nums[i]);
+        helper(nums,curr,res,i+1);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> curr;
+        vector<vector<int>> res;
+        helper(nums, curr, res, 0);
+        return res;
+    }
+};
