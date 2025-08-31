@@ -1,0 +1,9 @@
+void printSubset(string s, string curr){
+    if(s.length()==0){
+        cout<<curr<<endl;
+        return;
+    }
+    char ch = s[0];
+    printSubset(s.substr(1),curr+ch);
+    printSubset(s.substr(1),curr);
+}
