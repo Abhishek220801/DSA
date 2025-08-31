@@ -7,3 +7,15 @@ void printSubset(string s, string curr){
     printSubset(s.substr(1),curr+ch);
     printSubset(s.substr(1),curr);
 }
+
+// store in vector 
+
+void printSubset(string s, string curr, vector<string>& res){
+    if(s.length()==0){
+        res.push_back(curr);
+        return;
+    }
+    char ch = s[0];
+    printSubset(s.substr(1),curr+ch,res);
+    printSubset(s.substr(1),curr,res);
+}
