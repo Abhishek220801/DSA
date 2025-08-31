@@ -1,0 +1,20 @@
+void storeSubset(string ans, string original, vector<string>& v, bool flag){
+    if(original==""){
+        v.push_back(ans);
+        return;
+    }
+    char ch = original[0];
+    if(original.length()==1){
+        if(flag==true) storeSubset(ans+ch,original.substr(1),v,true);
+        storeSubset(ans,original.substr(1),v,true);
+        return; // taaki neeche ki do conditions na chale 
+    }
+    char dh = original[1];
+    if(ch==dh){
+        if(flag==true) storeSubset(ans+ch,original.substr(1),v,true);
+        storeSubset(ans,original.substr(1),v,false); // duplicate
+    } else{
+        if(flag==true) storeSubset(ans+ch,original.substr(1),v,true);
+        storeSubset(ans,original.substr(1),v,true); // not duplicate
+    }
+}
