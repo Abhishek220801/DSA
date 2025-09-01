@@ -8,6 +8,17 @@ void printSubset(string s, string curr){
     printSubset(s.substr(1),curr);
 }
 
+// using index 
+void printSubsets(string s, string curr, int i){
+    if(s.length()==i){
+        cout<<curr<<endl;
+        return;
+    }
+    printSubsets(s,curr,i+1);
+    curr.push_back(s[i]);
+    printSubsets(s,curr,i+1);
+}
+
 // store in vector 
 
 void printSubset(string s, string curr, vector<string>& res){
