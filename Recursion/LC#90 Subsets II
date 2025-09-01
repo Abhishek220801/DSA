@@ -1,0 +1,25 @@
+https://leetcode.com/problems/subsets-ii/
+
+class Solution {
+public:
+    void helper(vector<int>& nums,vector<int>& curr, vector<vector<int>>& res, int idx){
+        if(idx==nums.size()){
+            res.push_back(curr);
+            return;
+        }
+        curr.push_back(nums[idx]);
+        helper(nums,curr,res,idx+1);
+        curr.pop_back();
+        int i = idx+1;
+        while(i<nums.size() && nums[i]==nums[i-1]) i++;
+        helper(nums,curr,res,i);
+    }
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        vector<int> curr;
+        vector<vector<int>> res;
+        helper(nums,curr,res,0);
+        return res;
+    }
+};
