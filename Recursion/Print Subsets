@@ -30,3 +30,19 @@ void printSubset(string s, string curr, vector<string>& res){
     printSubset(s.substr(1),curr+ch,res);
     printSubset(s.substr(1),curr,res);
 }
+
+// of Array / Vector 
+
+void printSubsetsV(vector<int>& v, vector<int>& curr, int idx){
+    if(idx == v.size()){
+        for(int i: curr){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    curr.push_back(v[idx]);
+    printSubsetsV(v,curr,idx+1);
+    curr.pop_back();
+    printSubsetsV(v,curr,idx+1);
+}
