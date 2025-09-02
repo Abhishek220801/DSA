@@ -1,47 +1,47 @@
 //row-wise Solution 
 
 class Solution {
-private:
-    bool isValid(int row, int col, vector<string>& board, int n){
-        //verctically - up
-        for(int r=row;r>=0;r--){
-            if(board[r][col]=='Q') return false;
+public:
+    bool isSafe(vector<string>& board, int row, int col, int n){
+        // horizontal
+        for(int j=0; j<n; j++){
+            if(board[row][j] == 'Q') return false;
         }
-        //diagonally - top left
-        for(int r=row,c=col;r>=0&&c>=0;r--,c--){
-            if(board[r][c]=='Q') return false;
+        // vertical
+        for(int j=0; j<n; j++){
+            if(board[j][col] == 'Q') return false;
         }
-        //diagonally - top right
-        for(int r=row,c=col;r>=0&&c<n;r--,c++){
-            if(board[r][c]=='Q') return false;
+        // left diagonal
+        for(int i=row, j=col; i>=0 && j>=0; i--, j--){
+            if(board[i][j] == 'Q') return false;
         }
+        // right diagonal
+        for(int i=row, j=col; i>=0 && j<n; i--, j++){
+            if(board[i][j] == 'Q') return false;
+        }        
         return true;
     }
-    void helper(int row, vector<vector<string>>& res, vector<string>& board, int n){
-        //terminating condition 
+
+    void nQueens(vector<string> &board, int row, int n, vector<vector<string>> &ans){
         if(row==n){
-            res.push_back(board);
+            ans.push_back({board});
             return;
         }
-
-        for(int col=0;col<n;col++){
-            if (isValid(row,col,board,n)){
-                board[row][col]='Q';
-                helper(row+1,res,board,n);
-                board[row][col]='.';
+        for(int j=0; j<n; j++){
+            if(isSafe(board,row,j,n)){
+                board[row][j] = 'Q';
+                nQueens(board,row+1,n,ans);
+                board[row][j] = '.';
             }
         }
     }
-public:
+
     vector<vector<string>> solveNQueens(int n) {
-        vector<vector<string>> res;
-        vector<string> board(n);
-        string s(n,'.');
-        for(int i=0;i<n;i++){
-            board[i]=s;
-        }
-        helper(0,res,board,n);
-        return res;
+        vector<string> board(n, string(n, '.'));
+        vector<vector<string>> ans;
+
+        nQueens(board, 0, n, ans);
+        return ans;
     }
 };
 
