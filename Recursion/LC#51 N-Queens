@@ -1,5 +1,6 @@
-//row-wise Solution 
+https://leetcode.com/problems/n-queens/description/
 
+//row-wise Solution 
 class Solution {
 public:
     bool isSafe(vector<string>& board, int row, int col, int n){
@@ -47,7 +48,6 @@ public:
 
 
 //column-wise Solution 
-
 class Solution {
 private:
     bool isValid(int row, int col, vector<string>& board, int n){
