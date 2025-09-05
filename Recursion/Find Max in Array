@@ -1,3 +1,10 @@
+int maxVal(int arr[], int n, int i, int mx){
+    if(i==n) return mx;
+    return maxVal(arr,n,i+1,max(mx,arr[i]));
+}
+
+// or 
+
 //include<limits.h> to use INT_MIN / INT_MAX
 
 int findMax(int arr[], int n, int index){
