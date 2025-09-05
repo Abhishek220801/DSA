@@ -1,0 +1,15 @@
+void incSubseq(int arr[], int n, int idx, int k, vector<int> curr){
+    if(idx==n){
+        if(curr.size()==k){
+            for(int i=0; i<curr.size();i++){
+                cout<<curr[i]<<" ";
+            }
+            cout<<endl;
+        }
+        return;
+    }
+    if(curr.size()+(n-idx)<k) return;
+    incSubseq(arr,n,idx+1,k,curr);
+    curr.push_back(arr[idx]);
+    incSubseq(arr,n,idx+1,k,curr);
+}
