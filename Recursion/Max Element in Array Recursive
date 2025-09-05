@@ -13,6 +13,11 @@ int mx2(int arr[], int n, int idx){
     if(idx==n) return INT_MIN;
     return max(arr[idx], mx2(arr,n,idx+1));
 }
+or 
+int maxVal(int arr[], int n, int i, int mx){
+    if(i==n) return mx;
+    return maxVal(arr,n,i+1,max(mx,arr[i]));
+}
 
 // Print Max in Array using Recursion 
 void printMax(int arr[], int n, int i, int mx){
