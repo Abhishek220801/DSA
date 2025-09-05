@@ -46,3 +46,16 @@ void printSubsetsV(vector<int>& v, vector<int>& curr, int idx){
     curr.pop_back();
     printSubsetsV(v,curr,idx+1);
 }
+//or
+void printSubset(int arr[], int idx, int n, vector<int> curr){
+    if(idx==n){
+        for(int el: curr){
+            cout<<el<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    printSubset(arr,idx+1,n,curr);
+    curr.push_back(arr[idx]);
+    printSubset(arr,idx+1,n,curr);
+}
