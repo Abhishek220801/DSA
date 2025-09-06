@@ -1,9 +1,9 @@
 // HCF(a,b) <= min(a,b)
+// LCM(a,b) >= max(a,b)
 
-int a = 24, b = 72;
-    
-int ans = 1;
-for(int i=a; i>=2; i--){
-    if(i%a==0 && b%i==0) ans=i;
+int hcf(int a, int b){
+    for(int i=min(a,b); i>=2; i--){
+        if(a%i==0 && b%i==0) return i;
+    }
+    return 1;
 }
-cout<<ans;
