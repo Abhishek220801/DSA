@@ -1,0 +1,25 @@
+https://leetcode.com/problems/combination-sum
+
+class Solution {
+public:
+    void helper(vector<int>& candidates, vector<int> curr,vector<vector<int>>& res, int target, int idx){
+        if(target==0){
+            res.push_back(curr);
+            return;
+        }
+        if(target<0) return;
+
+        for(int i=idx; i<candidates.size(); i++){
+            curr.push_back(candidates[i]);
+            helper(candidates,curr,res,target-candidates[i],i);
+            curr.pop_back();
+        }
+    }
+        
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> res;
+        vector<int> curr;
+        helper(candidates,curr,res,target,0);
+        return res;
+    }
+};
