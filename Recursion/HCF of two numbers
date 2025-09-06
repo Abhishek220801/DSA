@@ -1,0 +1,7 @@
+int a = 24, b = 72;
+    
+int ans = 1;
+for(int i=a; i>=2; i--){
+    if(i%a==0 && b%i==0) ans=i;
+}
+cout<<ans;
