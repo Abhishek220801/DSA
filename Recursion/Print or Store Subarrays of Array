@@ -7,3 +7,17 @@ for(int i=0; i<n; i++){
           cout<<endl;
       }
   }
+
+// Recursive 
+void printSubarray(int arr[], int n, int idx, vector<int> curr){
+    if(idx==n){
+        for(int i=0; i<curr.size(); i++){
+            cout<<curr[i]<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    printSubarray(arr,n,idx+1,curr);
+    curr.push_back(arr[idx]);
+    printSubarray(arr,n,idx+1,curr);
+}
