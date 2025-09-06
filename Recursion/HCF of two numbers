@@ -7,3 +7,11 @@ int hcf(int a, int b){
     }
     return 1;
 }
+
+// or 
+
+// Much better method -> Euclid's Division Algorithm (Long Division Method) 
+int hcf(int a, int b){
+    if(a==0) return b;
+    return hcf(b%a,a);
+}
