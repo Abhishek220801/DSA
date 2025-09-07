@@ -1,5 +1,16 @@
 // Subarray => continuous members and in order
 
+// Iterative 
+  for(int i=0; i<n; i++){
+    for(int j=i; j<n; j++){
+        for(int k=i; k<=j; k++){
+            cout<<arr[k]<<" ";
+        }
+    cout<<endl;
+    }
+}
+
+// Recursive
 void printSubarray(int arr[], int n, int idx, vector<int> curr){
     if(idx==n){
         for(int i=0; i<curr.size(); i++){
@@ -14,3 +25,4 @@ void printSubarray(int arr[], int n, int idx, vector<int> curr){
         printSubarray(arr,n,idx+1,curr);
     }
 }
+
