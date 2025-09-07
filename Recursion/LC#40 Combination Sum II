@@ -1,0 +1,27 @@
+https://leetcode.com/problems/combination-sum-ii/
+
+class Solution {
+public:
+    void helper(vector<int>& candidates, vector<int> curr,vector<vector<int>>& res, int target, int idx){
+        if(target==0){
+            res.push_back(curr);
+            return;
+        }
+        if(target<0) return;
+
+        for(int i=idx; i<candidates.size(); i++){
+            if(i>idx && candidates[i]==candidates[i-1]) continue; // to skip duplicates
+            curr.push_back(candidates[i]);
+            helper(candidates,curr,res,target-candidates[i],i+1);
+            curr.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<int> curr;
+        vector<vector<int>> res;
+        sort(candidates.begin(),candidates.end()); // necessary so that duplicates sit together
+        helper(candidates,curr,res,target,0);
+        return res;
+    }
+};
