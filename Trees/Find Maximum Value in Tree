@@ -1,0 +1,6 @@
+int findMax(Node* root){
+    if(root==NULL) return 0;
+    int lMax = findMax(root->left);
+    int rMax = findMax(root->right);
+    return max(root->data, max(lMax,rMax));
+}
