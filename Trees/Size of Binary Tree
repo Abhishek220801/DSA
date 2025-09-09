@@ -1,5 +1,7 @@
 https://www.geeksforgeeks.org/problems/size-of-binary-tree/1
 
+// Size -> total nodes in the tree
+
 #Method 1 
 
 class Solution {
