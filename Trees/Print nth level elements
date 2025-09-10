@@ -1,0 +1,7 @@
+void printnthLevel(Node* root, int level, int n){
+    if(root==NULL) return;
+    if(level==n)
+        cout<<root->data<<" ";
+    printnthLevel(root->left,level+1,n);
+    printnthLevel(root->right,level+1,n);
+}
