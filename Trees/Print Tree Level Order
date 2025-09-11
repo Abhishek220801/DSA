@@ -1,0 +1,23 @@
+
+int levels(Node* root){
+    if(!root) return 0;
+    return 1+max(levels(root->left),levels(root->right));
+}
+
+void nthLevel(Node* root, int level, int n){
+    if(root==NULL) return;
+    if(level==n){
+        cout<<root->data<<" ";
+        return; // to avoid further calls which are unnecessary and make the code unoptimized 
+    }
+    nthLevel(root->left,level+1,n);
+    nthLevel(root->right,level+1,n);
+}
+
+void levelOrder(Node* root){
+    int n = levels(root);
+    for(int i=1; i<=n; i++){
+        nthLevel(root,1,i);
+        cout<<endl;
+    }
+}
