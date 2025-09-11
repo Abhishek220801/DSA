@@ -1,0 +1,28 @@
+
+void leftBoundary(Node* root){
+    if(!root || (!root->left && !root->right)) return;
+    cout<<root->data<<" ";
+    leftBoundary(root->left);
+    if(!root->left) leftBoundary(root->right);
+}
+
+void bottomBoundary(Node* root){
+    if(!root) return;
+    if(!root->left && !root->right) cout<<root->data<<" ";
+    bottomBoundary(root->left);
+    bottomBoundary(root->right);
+}
+
+void rightBoundary(Node* root){
+    if(!root || (!root->left && !root->right)) return;
+    if(!root->right) rightBoundary(root->left);
+    rightBoundary(root->right);
+    cout<<root->data<<" ";
+}
+
+void boundaryTraversal(Node* root){
+    if(!root) return;
+    leftBoundary(root);
+    bottomBoundary(root);
+    rightBoundary(root);
+}
