@@ -1,0 +1,47 @@
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
+
+class Solution {
+public:
+    TreeNode* build(vector<int>& pre, int prelo, int prehi, vector<int>& in, int inlo, int inhi){
+        if(inlo>inhi || prelo>prehi) return NULL;
+        TreeNode* root = new TreeNode(pre[prelo]);
+        int i=inlo;
+        while(i<=inhi){
+            if(in[i]==pre[prelo]) break;
+            i++;
+        }
+        int leftCount = i-inlo, rightCount = inhi-i;
+        root->left = build(pre, prelo+1, prelo+leftCount ,in ,inlo ,i-1);
+        root->right = build(pre, prelo+leftCount+1, prehi ,in ,i+1 ,inhi);
+        return root;
+    }
+
+    TreeNode* buildTree(vector<int>& pre, vector<int>& in) {
+        int n = pre.size();
+        return build(pre,0,n-1,in,0,n-1);
+    }
+};
+
+// or 
+
+class Solution {
+public:
+    TreeNode* helper(vector<int>& preorder, int pre_st, int pre_end, vector<int>& inorder, int in_st, int in_end, unordered_map<int,int>& map){
+        if(pre_st>pre_end || in_st>in_end) return NULL;
+        TreeNode* root = new TreeNode(preorder[pre_st]);
+        int in_root_idx = map[preorder[pre_st]];
+        int nums_in_left = in_root_idx - in_st;
+        root->left = helper(preorder,pre_st+1,pre_st+nums_in_left,inorder,in_st,in_st+nums_in_left-1,map);
+        root->right = helper(preorder,pre_st+nums_in_left+1,pre_end,inorder,in_st+nums_in_left+1,in_st+in_end,map);
+        return root;
+    }
+
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        unordered_map<int,int> map;
+        int array_size = inorder.size();
+        for(int i=0; i<array_size; i++){
+            map[inorder[i]] = i;
+        }
+        return helper(preorder,0,array_size-1,inorder,0,array_size-1,map);
+    }
+};
