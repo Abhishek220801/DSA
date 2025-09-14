@@ -11,3 +11,26 @@ public:
         return root;
     }
 };
+
+//or
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if(!root) return new TreeNode(val);
+        if(root->val > val){
+            if(root->left == NULL){
+                root->left = new TreeNode(val);
+                return root;
+            }
+            else insertIntoBST(root->left,val);
+        }
+        else{
+            if(root->right == NULL){
+                root->right = new TreeNode(val);
+                return root;
+            }
+            else insertIntoBST(root->right,val);
+        }
+        return root;
+    }
+};
