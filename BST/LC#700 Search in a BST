@@ -7,6 +7,20 @@ public:
         if(val==root->val) return root;
         if(val<root->val) return searchBST(root->left,val);
         if(val>root->val) return searchBST(root->right,val);
-        return NULL;
+        return NULL; // last line could be stated under an else statement so no need for this extra line as well
     }
 };
+
+//or
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        if(!root) return NULL;
+        if(root->val==val) return root;
+        if(val<root->val) return searchBST(root->left,val);
+        else return searchBST(root->right,val);
+    }
+};
+
+
+
