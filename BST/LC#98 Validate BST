@@ -1,5 +1,6 @@
 https://leetcode.com/problems/validate-binary-search-tree
 
+// TC not good 
 class Solution {
 private: 
     bool helper(TreeNode* root, long min, long max){
@@ -11,5 +12,27 @@ private:
 public:
     bool isValidBST(TreeNode* root) {
         return helper(root, LONG_MIN, LONG_MAX);
+    }
+};
+
+//or 
+// Optimized TC but taking space solution
+class Solution {
+public:
+    // since inorder of BST is sorted
+    void inorder(TreeNode* root, vector<int>& ans){
+        if(!root) return;
+        inorder(root->left,ans);
+        ans.push_back(root->val);
+        inorder(root->right,ans);
+    }
+
+    bool isValidBST(TreeNode* root) {
+        vector<int> ans;
+        inorder(root,ans);
+        for(int i=1; i<ans.size(); i++){
+            if(ans[i]<=ans[i-1]) return false;
+        }
+        return true;
     }
 };
