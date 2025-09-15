@@ -1,3 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* left, *right;
+    
+    Node(int data){
+        this->data = data;
+        left = right = NULL;
+    }
+};
+
+//preorder
+void display(Node* root){
+    if(!root) return;
+    cout<<root->data<<" ";
+    display(root->left);
+    display(root->right);
+}
+
 int main() {
     Node* a = new Node(1);
     Node* b = new Node(2);
@@ -31,9 +53,6 @@ int main() {
     g->right = o;
     
     Node* root = a;
-    
-    levelOrder(root);
-    // cout<<levels(root);
-
+    // display(root);
     return 0;
 }
