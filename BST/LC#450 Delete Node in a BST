@@ -23,3 +23,39 @@ public:
         return root;
     }
 };
+
+//or
+class Solution {
+public:
+    TreeNode* iop(TreeNode* root){
+        if(!root->left) return NULL;
+        TreeNode* pred = root->left;
+        while(pred->right) pred = pred->right;
+        return pred;
+    }
+
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if(!root) return NULL;
+        if(root->val==key){
+            // Case 1: No child
+            if(!root->left && !root->right) return NULL;
+            // Case 2: 1 child
+            if(!root->left || !root->right){
+                if(root->left) return root->left;
+                else return root->right;
+            }
+            // Case 3: 2 child nodes 
+            else{
+                // replace the root with its inorder pred
+                TreeNode* pred = iop(root);
+                root->val = pred->val;
+                root->left = deleteNode(root->left,pred->val);
+            }
+        }
+        else if(root->val>key){
+            root->left = deleteNode(root->left,key);
+        }
+        else root->right = deleteNode(root->right,key);
+        return root;
+    }
+};
