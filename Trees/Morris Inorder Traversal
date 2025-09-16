@@ -1,0 +1,28 @@
+https://leetcode.com/problems/binary-tree-inorder-traversal/
+
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        TreeNode* curr = root;
+        while(curr!=NULL){
+            if(curr->left==NULL){
+                ans.push_back(curr->val);
+                curr = curr->right;
+            } else {
+                //find the IP
+                TreeNode* IP = curr->left;
+                while(IP->right && IP->right!=curr) IP = IP->right;
+                if(IP->right==NULL){
+                    IP->right = curr; // create 
+                    curr = curr->left;
+                } else {
+                    IP->right = NULL; // destroy 
+                    ans.push_back(curr->val);
+                    curr = curr->right;
+                }
+            }
+        }
+        return ans;    
+    }
+};
