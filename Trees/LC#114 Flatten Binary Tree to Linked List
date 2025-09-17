@@ -1,5 +1,6 @@
 https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 
+# M1: using Preorder Traversal
 class Solution {
 public:
     vector<TreeNode*> pre(TreeNode* root){
@@ -23,5 +24,23 @@ public:
             ans[i]->right = ans[i+1];
             ans[i]->left = NULL;
         }
+    }
+};
+
+# M2: using Recursion
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root==NULL) return;
+        TreeNode* l = root->left, *r = root->right;
+        root->left = root->right = NULL;
+        flatten(l);
+        flatten(r);
+        root->right = l;
+        TreeNode* temp = root;
+        while(temp->right){
+            temp = temp->right;
+        }
+        temp->right = r;
     }
 };
