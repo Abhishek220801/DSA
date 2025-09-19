@@ -25,11 +25,20 @@ void insertionSort(vector<int>& arr, int n){
 }
 
 //or
-    for(int i=1; i<n; i++){
-        int j = i;
-        while(j>=1){
-            if(arr[j]>=arr[j-1]) break; 
-            else swap(arr[j],arr[j-1]);
-            j--;
-        }
+for(int i=1; i<n; i++){
+    int j = i;
+    while(j>=1){
+        if(arr[j]>=arr[j-1]) break; 
+        else swap(arr[j],arr[j-1]);
+        j--;
     }
+}
+
+//or
+for(int i=1; i<n; i++){
+    int j = i;
+    while(j>=1 && arr[j]<arr[j-1]){
+        swap(arr[j],arr[j-1]);
+        j--;
+    }
+}
