@@ -11,3 +11,15 @@ void selectionSort(vector<int>& arr, int n){
         swap(arr[ind],arr[i]);
     }
 }
+
+//or
+    for(int i=0; i<n-1; i++){
+        int mn = INT_MAX, mind = -1;
+        for(int j=i; j<n; j++){
+            if(arr[j]<mn) {
+                mn = arr[j];
+                mind = j;
+            };
+            swap(arr[i],arr[mind]);
+        }
+    }
