@@ -20,3 +20,23 @@ int main(){
         v[mindx] = 1;
     }
 }
+
+// using concept of Negative Marking
+for(int i=0; i<n; i++){
+    int min = INT_MAX, mindx = -1;
+    for(int j=0; j<n; j++){
+        if(arr[j]<=0) continue; // skip negatives  
+        else{
+            if(min>arr[j]){
+                min = arr[j];
+                mindx = j;
+            };
+        }
+    }
+    arr[mindx] = -x; // mark negative index
+    x++;
+}
+
+for(int i: arr){
+    cout<<-i<<" "; // original index by sign inversion
+}
