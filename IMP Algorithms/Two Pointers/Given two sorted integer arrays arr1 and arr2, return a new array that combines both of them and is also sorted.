@@ -1,0 +1,49 @@
+// Given two sorted integer arrays arr1 and arr2, return a new array that combines both of them and is also sorted.
+
+# Approach -> same starting for both pointers till iterable list is exhausted
+
+// Array as resultant
+int main(){
+
+    int arr[] = {1,3,5,7};
+    int arr2[] = {2,4,6,8};
+
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int m = sizeof(arr2)/sizeof(arr2[0]);
+
+    int res[n+m];
+
+    int i = 0, j = 0;
+    while(i<4 && j<4){
+        res[i+j] = arr[i];
+        res[i+j+1] = arr2[j];
+        i++;
+        j++;
+    }
+
+    for(int i: res) cout<<i<<" ";
+
+    return 0;
+};
+
+// Vector as resultant
+int main(){
+
+    int arr[] = {1,3,5,7};
+    int arr2[] = {2,4,6,8};
+
+    vector<int> v;
+
+    int i = 0, j = 0;
+
+    while(i<4 && j<4){
+        v.push_back(arr[i]);
+        v.push_back(arr2[j]);
+        i++;
+        j++;
+    }
+
+    for(int i: v) cout<<i<<" ";
+
+    return 0;
+};
