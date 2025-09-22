@@ -1,0 +1,30 @@
+https://leetcode.com/problems/binary-search/
+
+// Iterative 
+int binarySearch(int arr[], int n, int lo, int hi, int target){ // lo = 0, hi = arr.size-1
+    int mid;
+    while(lo<=hi){
+        mid = lo+(hi-lo)/2;
+        if(arr[mid]==target) return mid;
+        else if(arr[mid]>target) hi = mid-1;
+        else lo = mid+1;
+    }
+    return -1;
+}
+
+// Recursive 
+int binSearch(int arr[], int x, int s, int e){
+    while(s<e){
+        int mid =  s+(e-s)/2;  //to avoid Integer Overflow
+        if(arr[mid]==x){
+            return mid;
+        }
+        else if(x<arr[mid]){
+            binSearch(arr,x,s,mid-1);
+        } else{
+            binSearch(arr,x,mid+1,e);
+        }
+    }
+    return -1;
+}
+
