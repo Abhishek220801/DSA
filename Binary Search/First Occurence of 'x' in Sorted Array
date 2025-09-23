@@ -18,3 +18,18 @@
         else hi = mid-1;
     }
     if(flag==false) cout<<-1;
+
+//OR 
+int solve(vector<int>& v, int x){
+    int lo = 0, hi = v.size()-1, res = -1, mid;
+    while(lo<=hi){
+        mid = lo + (hi-lo)/2;
+        if(v[mid]==x){
+            res = mid;
+            hi = mid-1;
+        }
+        else if(v[mid]>x) hi = mid-1;
+        else lo = mid+1;
+    }
+    return res;
+}
