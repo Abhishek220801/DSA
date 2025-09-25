@@ -1,0 +1,14 @@
+// nearly sorted => ith elt: 3 choices: (i-1)th ,ith, or (i+1)th index position 
+
+int nearlySorted(int arr[], int n, int x){
+    int lo = 0, hi = n-1, mid;
+    while(lo<=hi){
+        mid = lo + (hi-lo)/2;
+        if(x==arr[mid]) return mid;
+        if((mid-1)>=lo && x==arr[mid-1]) return mid-1;
+        if((mid-1)<=hi && x==arr[mid+1]) return mid+1;
+        if(x<arr[mid]) hi = mid-2;
+        else lo = mid+2;
+    }
+    return -1;
+}
