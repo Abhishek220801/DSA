@@ -1,0 +1,10 @@
+// Algo
+
+int low = 0, high = 1;
+    
+while(key>arr[high]){
+      low = high;
+      high*=2;
+}
+    
+return BS(arr,arr.size(),low,high);
