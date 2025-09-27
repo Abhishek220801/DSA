@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+int bsa(int arr[], int n, int lo, int hi, int x){
+    int mid, ans = -1;
+    while(lo<=hi){
+        mid = lo+(hi-lo)/2;
+        if(arr[mid]==x){
+            ans = mid;
+            return ans;
+        }
+        else if(arr[mid]>x) hi = mid-1;
+        else lo = mid+1;
+    }
+    return ans;
+}
+
+int bsd(int arr[], int n, int lo, int hi, int x){
+    int mid, ans = -1;
+    while(lo<=hi){
+        mid = lo+(hi-lo)/2;
+        if(arr[mid]==x){
+            ans = mid;
+            return ans;
+        }
+        else if(arr[mid]>x) lo = mid+1;
+        else hi = mid-1;
+    }
+    return ans;
+}
+
+int peak(int arr[], int n){
+    int lo = 0, hi = n-1, mid;
+    while(lo<hi){
+        mid = lo + (hi-lo)/2;
+        if(arr[mid]>arr[mid+1]) hi = mid;
+        else lo = mid+1;
+    }
+    return lo;
+}
+
+int main() {
+    int arr[] = {1,3,8,12,4,2};
+    int n = 6;
+    int x = 4;
+    
+    int peakIdx = peak(arr,n);
+    int left = bsa(arr,n,0,peakIdx-1,x);
+    int right = bsd(arr,n,peakIdx,n-1,x);
+    
+    if(left>=0) cout<<"Target element found at index: "<<left;
+    else if(right>=0) cout<<"Target element found at index: "<<right;
+    else cout<<"Target element not found in the given array.";
+    // cout<<peakIdx;
+
+    return 0;
+}
