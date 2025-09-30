@@ -1,0 +1,15 @@
+https://www.geeksforgeeks.org/problems/rotation4723/1
+
+class Solution {
+  public:
+    int findKRotation(vector<int> &arr) {
+        // Code Here
+        int s = 0, e = arr.size()-1, mid;
+        while(s<e){
+            mid = s+(e-s)/2;
+            if(arr[mid]>arr[e]) s = mid+1;
+            else e = mid;
+        }
+        return s;
+    }
+};
