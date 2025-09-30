@@ -1,0 +1,27 @@
+int sqRoot(int n){
+    int s = 0, e = n;
+    long long mid;
+    int ans = -1;
+    while(s<=e){
+        long long mid = s+(e-s)/2;
+        long long sq = mid*mid;
+        if(sq==n) return mid;
+        else if(sq<n){
+            ans = mid;
+            s = mid+1;
+        }
+        else e = mid-1;
+    }
+    return ans;
+}
+
+double morePrecision(int n, int precision, int tempSol){
+    double factor = 1, ans = tempSol;
+    for(int i=0; i<precision; i++){
+        factor/=10;
+        for(double j=ans; j*j<n; j+=factor){
+            ans = j;
+        }
+    }
+    return ans;
+}
