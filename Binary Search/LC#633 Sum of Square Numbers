@@ -1,0 +1,27 @@
+https://leetcode.com/problems/sum-of-square-numbers/
+
+class Solution {
+public:
+    bool isPerfectSquare(int n){
+        int root = sqrt(n);
+        if(root*root==n) return true;
+        else return false;
+    }
+
+    bool judgeSquareSum(int c) {
+        int x = 0, y = c;
+        while(x<=y){
+            if(isPerfectSquare(x) && isPerfectSquare(y))
+                return true;
+            else if(!isPerfectSquare(x)){
+                x = ((int)sqrt(x)+1)*((int)sqrt(x)+1);
+                y = c-x;
+            }
+            else{
+                y = (int)sqrt(y)*(int)sqrt(y);
+                x = c-y;
+            }
+        }
+        return false;
+    }
+};
