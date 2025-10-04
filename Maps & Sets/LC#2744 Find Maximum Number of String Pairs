@@ -10,7 +10,10 @@ public:
             string rev = words[i];
             reverse(rev.begin(),rev.end());
             for(int j=i+1; j<n; j++){
-                if(words[j]==rev) count++;
+                if(words[j]==rev){
+                    count++;
+                    continue; // don't check further for that element since found a pair
+                };
             }
         }
         return count;
