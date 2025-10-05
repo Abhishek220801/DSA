@@ -1,0 +1,27 @@
+#include <iostream>
+#include<unordered_map>
+using namespace std;
+
+int main() {
+    // Declaration
+    unordered_map<string,int> ages;
+
+    // Insertion
+    ages["Abhishek"] = 24; 
+    ages.insert({"Charlie",35}); 
+    
+    // Accessing particular elements 
+    cout<<"Abhishek's age: "<<ages["Abhishek"]<<endl;
+    // Accessing all elements in the map
+    for(const auto &x: ages){
+        cout<<x.first<<": "<<x.second<<endl;
+    }
+    
+    // Delete an element 
+    ages.erase("Charlie");
+    
+    // Size
+    cout<<"Size of ages map: "<<ages.size();
+
+    return 0;
+}
