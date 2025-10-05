@@ -33,3 +33,12 @@ int main() {
 
     return 0;
 }
+
+
+/*
+std::unordered_set is particularly useful when:
+You need to store unique elements.
+The order of elements is not important.
+Fast average-case performance for insertions, deletions, and lookups is critical.
+Examples include checking for element existence, removing duplicates from a dataset, or implementing sets in algorithms like graph traversal. 
+*/
