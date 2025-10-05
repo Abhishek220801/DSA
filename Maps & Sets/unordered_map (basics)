@@ -25,3 +25,13 @@ int main() {
 
     return 0;
 }
+
+
+/*
+• Time Complexity: 
+	• Average Case: O(1) for insertion, deletion, and search. 
+	• Worst Case: O(N) in rare scenarios (e.g., hash collisions leading to a poorly distributed hash table), where N is the number of elements. 
+
+• Use Cases: unordered_map is ideal when you need fast lookups and insertions and the order of elements is not a concern. It's commonly used for tasks like frequency counting, caching, and implementing symbol tables. 
+*/
+
