@@ -1,0 +1,35 @@
+#include <iostream>
+#include<unordered_set>
+using namespace std;
+
+int main() {
+    // Declaration
+    unordered_set<int> s;
+
+    // insertion
+    s.insert(10); // inserts a single element 
+    s.insert({30,40,20}); // inserts multiple elements
+    
+    // deletion
+    s.erase(10); // Erases the element with value 10 
+    // Using an iterator to erase
+    if(auto it = s.find(30); it!=s.end()){
+        s.erase(it);
+    }
+    
+    // Searching/Checking Existence.
+    bool exists = s.count(20); // returns 1 if 20 is present, 0 otherwise 
+    if(s.find(10)!=s.end()){
+        // element 10 is found
+    }
+    
+    // size.
+    size_t numElements = s.size(); // returns number of elements in the set 
+    
+    // Iteration.
+    for(const auto &x: s){
+        // Process each element
+    }
+
+    return 0;
+}
