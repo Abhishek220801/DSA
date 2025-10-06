@@ -12,18 +12,6 @@ public:
         return r;
     }
 
-    int fact(int n){
-        int ans = 1;
-        for(int i=2; i<=n; i++){
-            ans*=i;
-        }
-        return ans;
-    }
-
-    int nCr(int n){
-        return fact(n)/(2*fact(n-2));
-    }
-
     int countNicePairs(vector<int>& nums) {
         int n = nums.size();
         int count = 0;
