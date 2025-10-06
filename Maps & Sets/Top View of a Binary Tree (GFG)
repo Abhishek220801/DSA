@@ -1,0 +1,44 @@
+https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+
+class Solution {
+  public:
+    vector<int> topView(Node *root) {
+        // code here
+        unordered_map<int,int> m;
+        queue<pair<Node*,int>> q;
+        vector<int> ans;
+        pair<Node*,int> r;
+        r.first = root;
+        r.second = 0;
+        q.push(r);
+        m[0] = root->data;
+        while(q.size()>0){
+            Node* temp = (q.front()).first;
+            int level = (q.front()).second;
+            q.pop();
+            if(m.find(level)==m.end()) m[level] = temp->data;
+            if(temp->left){
+                pair<Node*,int> p;
+                p.first = temp->left;
+                p.second = level-1;
+                q.push(p);
+            };
+            if(temp->right){
+                pair<Node*,int> p;
+                p.first = temp->right;
+                p.second = level+1;
+                q.push(p);
+            };
+        }
+        int minLevel = INT_MAX, maxLevel = INT_MIN;
+        for(auto &x: m){
+            int level = x.first;
+            minLevel = min(minLevel,level);
+            maxLevel = max(maxLevel,level);
+        }
+        for(int i=minLevel; i<=maxLevel; i++){
+            ans.push_back(m[i]);
+        }
+        return ans;
+    }
+};
