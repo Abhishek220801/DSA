@@ -12,7 +12,7 @@ public:
             pq.pop();
             int smx = pq.top();
             pq.pop();
-            pq.push(abs(mx-smx));
+            if(mx!=smx) pq.push(abs(mx-smx));
         }
         if(pq.size()==1) return pq.top();
         return 0;
