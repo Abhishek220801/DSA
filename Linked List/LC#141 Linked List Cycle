@@ -1,7 +1,8 @@
-//Detect Cycles in a LL
-//Floyd Cycle Detection 
-//Tortoise and Hare Algorithm 
-//https://leetcode.com/problems/linked-list-cycle/
+// Detect Cycles in a LL
+// Floyd Cycle Detection 
+// Tortoise and Hare Algorithm 
+
+https://leetcode.com/problems/linked-list-cycle/
 
 class Solution {
 public:
