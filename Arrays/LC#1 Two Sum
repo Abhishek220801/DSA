@@ -1,5 +1,6 @@
 //Pair Sum
 //return pair of two from array which sums to target
+https://leetcode.com/problems/two-sum/
 
 // O(N^2) - Brute Force Approach 
 vector<int> pairSum(vector<int> v, int target){
