@@ -43,7 +43,7 @@ public:
     } 
 };
 
-// map -> cumulative sum 
+// map -> cumulative sum -> O(N)
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
@@ -54,7 +54,7 @@ public:
 
         for(int i=0; i<nums.size(); i++){
             cumSum+=nums[i];
-            if(mp.find(cumSum-k)!=mp.end()){
+            if(mp.find(cumSum-k)!=mp.end()){   // O(1) for find op
                 result+=mp[cumSum-k];
             }
             mp[cumSum]++;
