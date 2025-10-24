@@ -1,0 +1,45 @@
+https://www.geeksforgeeks.org/problems/union-of-two-sorted-arrays-1587115621/1
+
+class Solution {
+  public:
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        // code here
+        int n = a.size(), m = b.size();
+        vector<int> output;
+        
+        int i = 0, j = 0;
+        
+        while(i<n && j<m){
+            while(i+1<n && a[i+1]==a[i]) i++;
+            while(j+1<m && b[j+1]==b[j]) j++;
+            if(a[i]<b[j]){
+                output.push_back(a[i]);
+                i++;
+            }
+            else if(b[j]<a[i]){
+                output.push_back(b[j]);
+                j++;
+            }
+            else{
+                output.push_back(a[i]);
+                i++;
+                j++;
+            }
+        }
+        
+        while(i<n){
+            while(i<n && a[i+1]==a[i]) i++;
+            output.push_back(a[i]);
+            i++;
+        }
+        
+        while(j<m){
+            while(j<m && b[j+1]==b[j]) j++;
+            output.push_back(b[j]);
+            j++;
+        }
+        
+        return output;
+ 
+    }
+};
