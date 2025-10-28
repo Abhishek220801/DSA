@@ -3,6 +3,27 @@ https://leetcode.com/problems/merge-strings-alternately
 class Solution {
 public:
     string mergeAlternately(string word1, string word2) {
+        int i = 0, j = 0;
+        string ans = "";
+        while(i<word1.length() && j<word2.length()){
+            ans+=word1[i++];
+            ans+=word2[j++];
+        }
+        while(i<word1.length()){
+            ans+=word1[i++];
+        }
+        while(j<word2.length()){
+            ans+=word2[j++];
+        }
+        return ans;
+    }
+};
+
+//or
+
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
         string ans = "";
         while(word1.length() && word2.length()){
             if(word1.length()==0){
