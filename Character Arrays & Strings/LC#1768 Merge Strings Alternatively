@@ -1,0 +1,39 @@
+https://leetcode.com/problems/merge-strings-alternately
+
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
+        string ans = "";
+        while(word1.length() && word2.length()){
+            if(word1.length()==0){
+                while(word2.length()){
+                    ans+=word2[0];
+                    word2 = word2.substr(1);
+                }
+            }
+            if(word2.length()==0){
+                while(word1.length()){
+                    ans+=word1[0];
+                    word1 = word1.substr(1);
+                }
+            }
+            ans+=word1[0];
+            word1 = word1.substr(1);
+            ans+=word2[0];
+            word2 = word2.substr(1);
+        }
+        if(word1.length()>0){
+            while(word1.length()>0){
+                ans+=word1[0];
+                word1 = word1.substr(1);
+            }
+        }
+        if(word2.length()>0){
+            while(word2.length()>0){
+                ans+=word2[0];
+                word2 = word2.substr(1);
+            }
+        }
+        return ans;
+    }
+};
