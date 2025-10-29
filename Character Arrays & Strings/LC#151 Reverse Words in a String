@@ -42,3 +42,25 @@ public:
         return ans.substr(1);
     }
 };
+
+//OR
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        stringstream ss(s);
+        string temp;
+        stack<string> st;
+        while(ss>>temp){
+            st.push(temp);
+        }
+        temp = "";
+        while(!st.empty()){
+            temp+=st.top();
+            temp+=" ";
+            st.pop();
+        }
+        temp.pop_back();
+        return temp;
+    }
+};
