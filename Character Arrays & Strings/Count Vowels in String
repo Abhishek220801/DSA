@@ -1,7 +1,10 @@
-int count = 0, i = 0;
-  while(str[i]!= '\0'){
-    if(str[i] == 'a' || str[i] == 'A' || str[i]=='e' || str[i] == 'E' || str[i] == 'i' || str[i] == 'I' || str[i] == 'o' || str[i] == 'O' || str[i] == 'u' || str[i] == 'U'){
-        count++;
+int countVowel(string &greeting){
+    int count = 0;
+    for(int i=0; i<greeting[i]!='\0'; i++){
+        if(greeting[i]=='a' || greeting[i]=='e' ||greeting[i]=='i' ||greeting[i]=='o' ||greeting[i]=='u' ||
+        greeting[i]=='A' ||greeting[i]=='E' ||greeting[i]=='I' ||greeting[i]=='O' ||greeting[i]=='U'){
+            count++;
+        }
     }
-    i++;
+    return count;
 }
