@@ -1,0 +1,24 @@
+https://leetcode.com/problems/house-robber-ii/
+
+class Solution {
+public:
+    int t[101];
+    int helper(vector<int>& nums, int i, int n){
+        if(i>n) return 0;      // using n as index and both n-1 and n-2 are valid indices, so can't consider them out of bound values
+        if(t[i]!=-1) return t[i];
+        int steal = nums[i] + helper(nums,i+2,n);
+        int skip = helper(nums,i+1,n);
+        return t[i] = max(steal, skip);
+    }
+
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        if(n==1) return nums[0];               // single house
+        if(n==2) return max(nums[0],nums[1]);  // two houses
+        memset(t, -1, sizeof(t));
+        int steal_0th = helper(nums,0,n-2);    // 0th robber, can't rob last since circular
+        memset(t, -1, sizeof(t));              // 1st robbed, can rob last 
+        int skip_0th = helper(nums,1,n-1);
+        return max(steal_0th, skip_0th);     
+    }
+};
