@@ -11,3 +11,20 @@ private:
         return max(robHelper(nums, i-2)+nums[i],robHelper(nums, i-1));
     }
 };
+
+//or 
+
+class Solution {
+public:
+    int solve(vector<int> &nums, int i, int n){
+        if(i>=n) return 0;
+        int steal = nums[i]+solve(nums, i+2, n);
+        int skip = solve(nums, i+1, n);
+        return max(steal, skip); 
+    }
+
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        return solve(nums, 0, n);
+    }
+};
