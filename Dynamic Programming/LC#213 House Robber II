@@ -1,5 +1,6 @@
 https://leetcode.com/problems/house-robber-ii/
 
+// Top Down or Memoization
 class Solution {
 public:
     int t[101];
@@ -20,5 +21,38 @@ public:
         memset(t, -1, sizeof(t));              // 1st robbed, can rob last 
         int skip_0th = helper(nums,1,n-1);
         return max(steal_0th, skip_0th);     
+    }
+};
+
+// Bottom Up or Tabulation
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        if(n==1) return nums[0];
+        if(n==2) return max(nums[0], nums[1]);
+        vector<int> t(n+1, 0);
+        t[0] = 0;
+        
+        // case 1: steal house 1, can't take last
+        for(int i=1; i<=n-1; i++){
+            int skip = t[i-1];
+            int steal = nums[i-1] + ((i-2)>=0 ? t[i-2] : 0);
+            t[i] = max(skip, steal);
+        }
+        int res1 = t[n-1];
+
+        t.clear();
+        t[0] = 0, t[1] = 0;
+
+        // case 2: skip house 1, therefore can take last
+        for(int i=2; i<=n; i++){
+            int skip = t[i-1];
+            int steal = nums[i-1] + ((i-2)>=0 ? t[i-2] : 0);
+            t[i] = max(skip, steal);
+        }
+        int res2 = t[n];
+
+        return max(res1, res2);
     }
 };
