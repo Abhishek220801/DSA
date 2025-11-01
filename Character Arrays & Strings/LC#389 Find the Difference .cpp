@@ -1,3 +1,22 @@
+// Approach 1 - using character occurence freq
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        unordered_map<char, int> mp;
+
+        for(char &ch: s){
+            mp[ch]++;
+        }
+
+        for(char &ch: t){
+            mp[ch]--;
+            if(mp[ch] < 0) return ch;
+        }
+
+        return 'x'; // flow never reaches here since answer always exist
+    }
+};
+
 // Approach 2 - using ASCII and difference 
 class Solution {
 public:
