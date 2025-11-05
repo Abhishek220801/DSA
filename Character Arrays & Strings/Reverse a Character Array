@@ -26,9 +26,7 @@ void reverseCA(char name[]){
     int s=0, e=strlen(name)-1;
     
     while(s<=e){
-        swap(name[s],name[e]);
-        s++;
-        e--;
+        swap(name[s++],name[e--]);
     }
 }
 
