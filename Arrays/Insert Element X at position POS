@@ -1,0 +1,19 @@
+void insert(vector<int> &arr, int pos, int target){
+    n = arr.size();
+    int temp = arr[pos];
+    queue<int> q;
+    for(int i=pos; i<n; i++){
+        q.push(arr[i]);
+    }
+    arr[pos] = target;
+    for(int i=pos+1; i<n; i++){
+        arr[i] = q.front();
+        q.pop();
+    }
+    if(!q.empty()){
+        while(!q.empty()){
+            arr.push_back(q.front());
+            q.pop();
+        }
+    }
+}
