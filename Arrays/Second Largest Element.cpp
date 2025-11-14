@@ -1,3 +1,24 @@
+int secondMax(int arr[], int n){
+    int mx, secondMax=-1, maxIdx=-1;
+    mx = secondMax = INT_MIN;
+    for(int i=0; i<n; i++){
+        if(arr[i]>mx){
+            mx = arr[i];
+            maxIdx = i;
+        }
+    }
+    arr[maxIdx] = -1;
+    
+    for(int i=0; i<n; i++){
+        if(arr[i]>secondMax && arr[i]!=mx){
+            secondMax = arr[i];
+        }
+    }
+    return secondMax;
+}
+
+//OR
+
 int secondLargestElement(int arr[],int n){
     int max = INT_MIN;
     int second_max = INT_MIN;
