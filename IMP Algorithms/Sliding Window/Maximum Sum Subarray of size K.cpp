@@ -1,3 +1,4 @@
+// #1. Brute Force 
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -11,8 +12,8 @@ int main() {
         int sum = 0;
         for(int j=i; j<i+k; j++){
             sum+=arr[j];
-            if(sum>maxSum) maxSum = sum;
         }
+        maxSum = max(sum, maxSum);
     }
     
     cout<<"Maximum subarray sum = "<<maxSum<<endl;
