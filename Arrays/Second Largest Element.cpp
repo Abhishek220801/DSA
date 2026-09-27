@@ -85,3 +85,23 @@ class Solution {
     }
 };
 
+// OR
+
+class Solution {
+  public:
+    int getSecondLargest(vector<int> &arr) {
+        // code here
+        int n = arr.size(), maxi = INT_MIN, maxIdx = -1, secondMax = INT_MIN;
+        for(int i=0; i<n; i++) {
+            if(arr[i] > maxi) maxi = arr[i]
+        }
+        
+        for(int i=0; i<n; i++) {
+            if(arr[i] > secondMax && arr[i]!=maxi){
+                secondMax = arr[i];
+            }
+        }
+        
+        return secondMax == INT_MIN ? -1 : secondMax;
+    }
+};
