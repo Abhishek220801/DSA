@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/dsa/program-to-reverse-an-array/
+
 vector<int> v2(a.size());
 for(int i=0; i<v2.size();i++){
     v2[i] = v1[v1.size()-1-i];
