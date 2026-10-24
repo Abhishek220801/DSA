@@ -1,4 +1,4 @@
-https://leetcode.com/problems/majority-element/description/
+// https://leetcode.com/problems/majority-element/description/
 
 //brute force - O(N^2)
 
