@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/find-distinct-elements--130928/1
+
 unordered_map<int,int> countUniqueDifferent(int arr[], int n){
     unordered_map<int,int> mp;
     for(int i=0; i<n; i++){
